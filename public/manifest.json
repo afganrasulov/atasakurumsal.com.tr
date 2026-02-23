@@ -1,0 +1,22 @@
+{
+    "name": "Atasa Kurumsal Danışmanlık",
+    "short_name": "Atasa",
+    "description": "Türkiye'de yabancı personel çalışma izni, ikamet izni ve vatandaşlık danışmanlığı.",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "theme_color": "#0047BB",
+    "background_color": "#f8fafc",
+    "lang": "tr",
+    "categories": [
+        "business",
+        "productivity"
+    ],
+    "icons": [
+        {
+            "src": "/favicon.ico",
+            "sizes": "any",
+            "type": "image/x-icon"
+        }
+    ]
+}

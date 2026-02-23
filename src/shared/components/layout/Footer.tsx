@@ -190,12 +190,12 @@ export function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/hizmetlerimiz" className="hover:text-blue-400 transition-colors block">
+                                <Link href="/calisma-izni" className="hover:text-blue-400 transition-colors block">
                                     Süreli Çalışma İzni
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/hizmetlerimiz" className="hover:text-blue-400 transition-colors block">
+                                <Link href="/calisma-izni" className="hover:text-blue-400 transition-colors block">
                                     Süresiz Çalışma İzni
                                 </Link>
                             </li>
@@ -203,17 +203,17 @@ export function Footer() {
                                 İkamet & Vatandaşlık
                             </li>
                             <li>
-                                <Link href="/hizmetlerimiz" className="hover:text-blue-400 transition-colors block">
+                                <Link href="/ikamet-izni" className="hover:text-blue-400 transition-colors block">
                                     İkamet İzni
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/hizmetlerimiz" className="hover:text-blue-400 transition-colors block">
+                                <Link href="/vatandaslik" className="hover:text-blue-400 transition-colors block">
                                     Vatandaşlık İşlemleri
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/hizmetlerimiz" className="hover:text-blue-400 transition-colors block">
+                                <Link href="/sirket-kurulusu" className="hover:text-blue-400 transition-colors block">
                                     Yabancı Ortaklı Şirket Kuruluşu
                                 </Link>
                             </li>
@@ -232,7 +232,7 @@ export function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/hizmetlerimiz" className="hover:text-orange-400 transition-colors block">
+                                <Link href="/sektorel-danismanlik" className="hover:text-orange-400 transition-colors block">
                                     Sektörel Çözümler
                                 </Link>
                             </li>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export function PageLoadAnimation() {
     const [loading, setLoading] = useState(true);
@@ -21,7 +22,7 @@ export function PageLoadAnimation() {
                     className="fixed inset-0 z-[200] bg-slate-950 flex items-center justify-center"
                 >
                     <div className="flex flex-col items-center gap-6">
-                        {/* Logo */}
+                        {/* Logo with Shimmer */}
                         <motion.div
                             initial={{ scale: 0.5, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
@@ -30,13 +31,29 @@ export function PageLoadAnimation() {
                                 damping: 20,
                                 delay: 0.2,
                             }}
+                            className="relative overflow-hidden rounded-xl"
                         >
-                            <span className="text-3xl md:text-4xl font-black text-white tracking-tight">
-                                Atasa{" "}
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-                                    Kurumsal
-                                </span>
-                            </span>
+                            <Image
+                                src="/images/atasa-logo.png"
+                                alt="Atasa Kurumsal Logo"
+                                width={260}
+                                height={93}
+                                priority
+                                className="h-20 md:h-24 w-auto object-contain drop-shadow-2xl brightness-0 invert"
+                            />
+
+                            {/* Shimmer Effect */}
+                            <motion.div
+                                className="absolute inset-0 top-0 bottom-0 w-2/3 bg-gradient-to-r from-transparent via-white/50 to-transparent skew-x-[-25deg] pointer-events-none z-10"
+                                initial={{ left: "-150%", opacity: 0 }}
+                                animate={{ left: "250%", opacity: [0, 1, 0] }}
+                                transition={{
+                                    repeat: Infinity,
+                                    repeatDelay: 6,
+                                    duration: 1.5,
+                                    ease: "easeInOut",
+                                }}
+                            />
                         </motion.div>
 
                         {/* Loading bar */}

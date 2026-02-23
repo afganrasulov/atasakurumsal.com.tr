@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
@@ -50,9 +51,14 @@ export function Header() {
                     {/* Logo */}
                     <Link href="/" className="flex items-center group" aria-label="Ana Sayfa">
                         <div className="relative group-hover:scale-105 transition-transform duration-500">
-                            <span className="text-xl font-black text-slate-900 tracking-tight">
-                                Atasa<span className="text-blue-600"> Kurumsal</span>
-                            </span>
+                            <Image
+                                src="/images/atasa-logo.png"
+                                alt="Atasa Kurumsal Logo"
+                                width={160}
+                                height={57}
+                                priority
+                                className="h-10 w-auto object-contain"
+                            />
                         </div>
                     </Link>
 
@@ -99,9 +105,14 @@ export function Header() {
             {/* Mobile Header */}
             <div className="md:hidden fixed top-0 w-full z-50 bg-white/90 backdrop-blur-2xl border-b border-slate-100 px-4 py-2 flex justify-between items-center shadow-sm">
                 <Link href="/" className="flex items-center" aria-label="Ana Sayfa">
-                    <span className="text-lg font-black text-slate-900 tracking-tight">
-                        Atasa<span className="text-blue-600"> Kurumsal</span>
-                    </span>
+                    <Image
+                        src="/images/atasa-logo.png"
+                        alt="Atasa Kurumsal Logo"
+                        width={130}
+                        height={46}
+                        priority
+                        className="h-8 w-auto object-contain"
+                    />
                 </Link>
                 <button
                     onClick={() => setMobileOpen(!mobileOpen)}

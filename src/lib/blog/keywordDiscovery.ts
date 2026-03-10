@@ -117,9 +117,10 @@ DİKKAT EDİLECEK KURALLAR:
 - Daha önce kullanılan kelimelerle çakışmaması için kelimeleri birbirinden çok farklı, soru tipli veya niş kitlelere yönelik (örn: İngiliz vatandaşları için Türkiye çalışma izni, teknoloji şirketi yabancı mühendis çalışma izni) üret.
 
 ÖRNEK ODAK KELİMELERİMİZ (Bunların kalitesinde ve nişliğinde anahtar kelimeler türet):
-- yabancılara çalışma izni nasıl alınır, çalışma izni gerekli belgeler, çalışma izni harçları, çalışma izni başvuru süreleri
-- çalışma izni red ve itiraz, çalışma izni muafiyetleri, istisnai çalışma izni, yabancı çalışma izni yeni kanun
-- yabancı taban ücretler, deport olmuş yabancılara çalışma izni, şirket ortağı çalışma izni, yabancı SGK girişi
+- Yabancılara çalışma izni almak, çalışma izni gerekli belgeler, çalışma izni harçları, çalışma izni başvuru süreleri
+- Yabancılar için çalışma izni uzatma, çalışma izni red ve itiraz, çalışma izni muafiyetleri, istisnai çalışma izni
+- Çalışma izni transferi - çalışanların başka şirketlere transferleri, yabancı taban ücretler, deport olmuş yabancılara çalışma izni
+- Yabancı bakıcılar için - Evinizde çalışacak yabancı personele çalışma izni almak, şirket ortağı çalışma izni, yabancı SGK girişi
 - çalışma izni uzatma müracaat belgesi, serbest bölgelerde çalışma izni, Türk soylu çalışma izni
 - ev hizmetlerinde yabancı çalıştırma, yabancı öğretmen çalışma izni, ikamet izni çeşitleri, ikamet izni ücretleri, yabancı ortaklı şirket kuruluşu
 

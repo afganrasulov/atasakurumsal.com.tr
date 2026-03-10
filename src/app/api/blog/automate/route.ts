@@ -8,7 +8,8 @@ import {
     logAutomationRun,
 } from '@/lib/blog/blogService';
 
-const DAILY_LIMIT = 2;
+const DAILY_LIMIT = 2; // Günlük toplam makale limiti
+const PER_RUN_LIMIT = 1; // Her cron çalışmasında maksimum makale
 
 export async function POST(request: NextRequest) {
     const startTime = Date.now();
@@ -38,7 +39,7 @@ export async function POST(request: NextRequest) {
 
         // ── Adım 2: Auto-Approve ──
         try {
-            approved = await autoApproveTopics(DAILY_LIMIT);
+            approved = await autoApproveTopics(PER_RUN_LIMIT);
         } catch (err) {
             const msg = err instanceof Error ? err.message : 'Approve hatası';
             errors.push(`[Approve] ${msg}`);
@@ -46,7 +47,7 @@ export async function POST(request: NextRequest) {
 
         // ── Adım 3: Article Generation ──
         const todayCount = await getTodayGenerationCount();
-        const remaining = Math.max(0, DAILY_LIMIT - todayCount);
+        const remaining = Math.min(PER_RUN_LIMIT, Math.max(0, DAILY_LIMIT - todayCount));
 
         if (remaining > 0) {
             const approvedTopics = await getTopics('approved');

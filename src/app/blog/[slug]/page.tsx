@@ -5,6 +5,7 @@ import {
   generateArticleSchema,
   generateFAQSchema,
   generateBreadcrumbSchema,
+  generateHowToSchema,
 } from "@/lib/blog/aiSeoSchema";
 import { getPostBySlug, getPosts } from "@/lib/blog/blogService";
 
@@ -61,6 +62,7 @@ export default async function BlogDetailPage({ params }: PageParams) {
   // Generate schemas
   const articleSchema = generateArticleSchema(post);
   const faqSchema = generateFAQSchema(post.faq);
+  const howToSchema = generateHowToSchema(post);
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Ana Sayfa", url: "https://www.atasakurumsal.com.tr" },
     { name: "Blog", url: "https://www.atasakurumsal.com.tr/blog" },
@@ -101,6 +103,12 @@ export default async function BlogDetailPage({ params }: PageParams) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {howToSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+        />
+      )}
       <BlogDetailClient post={post} relatedPosts={relatedPosts} />
     </>
   );

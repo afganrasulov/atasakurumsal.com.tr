@@ -9,6 +9,12 @@ import { FloatingWhatsApp } from "@/shared/components/FloatingWhatsApp";
 import { StickyCTABar } from "@/shared/components/StickyCTABar";
 import { ExitIntentPopup } from "@/shared/components/ExitIntentPopup";
 import { PageLoadAnimation } from "@/shared/components/PageLoadAnimation";
+import {
+  generateOrganizationSchema,
+  generateLocalBusinessSchema,
+  generateWebSiteSchema,
+  generateServiceSchemas,
+} from "@/lib/blog/aiSeoSchema";
 
 
 
@@ -65,6 +71,23 @@ export default function RootLayout({
   return (
     <html lang="tr" className="scroll-smooth" suppressHydrationWarning>
       <body className={`${montserrat.variable} font-sans antialiased text-slate-900`} suppressHydrationWarning>
+        {/* Global Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateOrganizationSchema()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateLocalBusinessSchema()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateWebSiteSchema()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateServiceSchemas()) }}
+        />
         <QueryProvider>
           <div className="min-h-screen flex flex-col">
             <Header />

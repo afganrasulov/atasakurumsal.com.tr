@@ -150,3 +150,128 @@ export function generateLocalBusinessSchema() {
     },
   };
 }
+
+// ─── HowTo Schema ────────────────────────────────────────
+
+export function generateHowToSchema(post: {
+  title: string;
+  slug: string;
+  content: string;
+  summary: string | null;
+}) {
+  // HTML'den adımları çıkar (h3 etiketlerini adım olarak al)
+  const stepRegex = /<h3[^>]*>(.*?)<\/h3>\s*<p>([\s\S]*?)<\/p>/gi;
+  const steps: Array<{ name: string; text: string }> = [];
+  let match;
+  while ((match = stepRegex.exec(post.content)) !== null) {
+    steps.push({
+      name: match[1].replace(/<[^>]*>/g, '').trim(),
+      text: match[2].replace(/<[^>]*>/g, '').trim().slice(0, 300),
+    });
+  }
+
+  if (steps.length < 2) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: post.title,
+    description: post.summary || "",
+    url: `${SITE_URL}/blog/${post.slug}`,
+    totalTime: "PT30M",
+    step: steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+      url: `${SITE_URL}/blog/${post.slug}#step-${i + 1}`,
+    })),
+  };
+}
+
+// ─── Service Schema ──────────────────────────────────────
+
+interface ServiceInfo {
+  name: string;
+  slug: string;
+  description: string;
+}
+
+const SERVICES: ServiceInfo[] = [
+  {
+    name: "Çalışma İzni Danışmanlığı",
+    slug: "calisma-izni",
+    description: "Türkiye'de yabancı personel çalışma izni başvuru ve takip hizmeti.",
+  },
+  {
+    name: "İkamet İzni Danışmanlığı",
+    slug: "ikamet-izni",
+    description: "Kısa ve uzun dönem ikamet izni başvuru danışmanlığı.",
+  },
+  {
+    name: "Çalışma İzni Uzatma",
+    slug: "calisma-izni-uzatma",
+    description: "Mevcut çalışma izinlerinin süre uzatma işlemleri.",
+  },
+  {
+    name: "Çalışma İzni Transferi",
+    slug: "calisma-izni-transferi",
+    description: "İşveren değişikliğinde çalışma izni transfer işlemleri.",
+  },
+  {
+    name: "Türk Vatandaşlığı Danışmanlığı",
+    slug: "vatandaslik",
+    description: "Türk vatandaşlığı başvuru ve istisnai vatandaşlık danışmanlığı.",
+  },
+  {
+    name: "Turkuaz Kart Danışmanlığı",
+    slug: "turkuaz-kart",
+    description: "Nitelikli yabancılar için Turkuaz Kart başvuru danışmanlığı.",
+  },
+  {
+    name: "Toplu Başvuru Yönetimi",
+    slug: "toplu-basvuru",
+    description: "Çok sayıda yabancı personel için toplu çalışma izni yönetimi.",
+  },
+  {
+    name: "SGK ve Bordro Hizmetleri",
+    slug: "sgk-bordro",
+    description: "Yabancı personel SGK kaydı, bordro ve yasal uyum hizmetleri.",
+  },
+];
+
+export function generateServiceSchemas() {
+  return SERVICES.map((service) => ({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.name,
+    description: service.description,
+    url: `${SITE_URL}/${service.slug}`,
+    provider: {
+      "@type": "Organization",
+      name: COMPANY_INFO.name,
+      url: SITE_URL,
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "Turkey",
+    },
+    serviceType: "Danışmanlık",
+  }));
+}
+
+// ─── WebSite Schema (Sitelinks Search Box) ───────────────
+
+export function generateWebSiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: COMPANY_INFO.name,
+    url: SITE_URL,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE_URL}/blog?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+}

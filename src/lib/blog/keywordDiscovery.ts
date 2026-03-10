@@ -50,17 +50,22 @@ async function searchWebForKeyword(keyword: string): Promise<DiscoveredTopic[]> 
     const response = await getOpenAI().responses.create({
         model: 'gpt-5-mini',
         tools: [{ type: 'web_search' as never }],
-        instructions: `Sen uzman bir SEO içerik araştırmacısısın. Türkiye'de çalışma izni ve ikamet danışmanlığı sektöründe çalışıyorsun.
+        instructions: `Sen uzman bir SEO içerik araştırmacısısın. Türkiye'de sadece yabancıların ÇALIŞMA İZNİ, İKAMET İZNİ ve YABANCI ŞİRKET KURULUŞU süreçleriyle ilgilenen "Atasa Danışmanlık" firması için çalışıyorsun.
+
+DİKKAT EDİLECEK KURALLAR:
+- ASLA turizm, gezi, hastane, eğitim (üniversiteler) gibi günlük yaşam konularında içerik ÜRETME!
+- Hedefimiz kurumsal danışmanlık talep eden yabancılar ve yabancı çalıştıran Türk şirketleri.
+- Taramalarını %100 çalışma izni, ikamet, vatandaşlık ve şirket kuruluşu mevzuatları özelinde gerçekleştir.
 
 Verilen anahtar kelimeye göre DÖRT farklı kategoride konu bul:
 
 1. **Güncel Haberler (news)**: Son 30 gün içindeki değişiklikler, yeni düzenlemeler, mevzuat güncellemeleri
-2. **Evergreen İçerik (evergreen)**: Zaman aşımına uğramayan rehber, adım-adım kılavuz konuları
-3. **People Also Ask (paa)**: İnsanların bu konuda sıkça sorduğu sorular — "Nasıl yapılır?", "Ne kadar sürer?", "Ne gerekir?" tarzında
-4. **Long-tail Keyword (long-tail)**: Rekabeti düşük ama hedefli spesifik başlıklar — belirli sektör, ülke, veya senaryo odaklı
+2. **Evergreen İçerik (evergreen)**: Zaman aşımına uğramayan rehber, adım-adım kılavuz konuları (örn: 2024 Yabancılara çalışma izni nasıl alınır?)
+3. **People Also Ask (paa)**: İnsanların bu konuda sıkça sorduğu sorular — "Nasıl yapılır?", "Ne kadar sürer?", "Reddedilince ne yapılmalı?" tarzında
+4. **Long-tail Keyword (long-tail)**: Rekabeti düşük ama hedefli spesifik başlıklar — belirli sektör, ülke, veya senaryo odaklı (örn: Yabancı doktor çalışma izni şartları)
 
 Her konu için SKOR ver (1-100):
-- Alakalılık (Atasa'nın uzmanlık alanıyla ne kadar ilgili): 0-40 puan
+- Alakalılık (Atasa'nın kurumsal danışmanlık alanıyla ne kadar ilgili): 0-40 puan
 - Arama Potansiyeli (hedef kitlenin bunu arama olasılığı): 0-30 puan
 - Rekabet Düzeyi (düşük rekabet = yüksek puan): 0-30 puan
 
@@ -104,10 +109,14 @@ export async function autoPopulateKeywords(minThreshold = 5): Promise<number> {
 
     const response = await getOpenAI().responses.create({
         model: 'gpt-5-mini',
-        instructions: `Sen SEO uzmanısın. Türkiye'de yabancıların çalışma izni, ikamet izni, vatandaşlık ve şirket kuruluşu süreçleriyle ilgilenen danışmanlık firması Atasa Danışmanlık için aranma hacmi yüksek ama rekabeti düşük "long-tail keyword" üreteceksin. 
-Daha önce kullanılan kelimelerle çakışmaması için kelimeleri birbirinden çok farklı, soru tipli veya niş kitlelere yönelik (örn: İngiliz vatandaşları için Türkiye çalışma izni) üret.
+        instructions: `Sen SEO uzmanısın. Türkiye'de yabancıların "ÇALIŞMA İZNİ" süreçleriyle ilgilenen danışmanlık firması Atasa Danışmanlık için aranma hacmi yüksek ama rekabeti düşük "long-tail keyword" üreteceksin. 
+
+DİKKAT EDİLECEK KURALLAR:
+- SADECE şu hizmetlerle ilgili kelimeler türetebilirsin: Yabancılara Çalışma İzni, İkamet İzni (oturma izni), Çalışma İzni Uzatma, Çalışma İzni Transferi, Yabancı Bakıcı Çalışma İzni, Türk Vatandaşlığı, Turkuaz Kart, Toplu Başvuru, Yabancı SGK/Bordro, Yabancı Şirket Kuruluşu, Sektörel Yabancı İstihdamı.
+- ASLA "Türkiye'de gezilecek yerler", "En iyi üniversiteler", "Yabancılar için hastaneler" gibi turistik/günlük yaşam kelimeleri GETİRME! %100 Kurumsal Danışmanlık niyeti barındıran ("nasıl alınır", "şartları nelerdir", "2024 güncel harçları", "gerekli evraklar", "reddi durumunda ne yapılır") gibi kelimeler üret.
+- Daha önce kullanılan kelimelerle çakışmaması için kelimeleri birbirinden çok farklı, soru tipli veya niş kitlelere yönelik (örn: İngiliz vatandaşları için Türkiye çalışma izni, teknoloji şirketi yabancı mühendis çalışma izni) üret.
 Sonucu SADECE JSON array olarak döndür: ["keyword1", "keyword2", "keyword3"]`,
-        input: `Bana Türkiye pazarından 5 adet yeni, niş ve etkili long-tail anahtar kelime üret.`,
+        input: `Bana sadece Atasa Danışmanlık hizmetlerine TAM uyumlu 5 adet yeni, niş ve etkili long-tail anahtar kelime üret.`,
     });
 
     try {

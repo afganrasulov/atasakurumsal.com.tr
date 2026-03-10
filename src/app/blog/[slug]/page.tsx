@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 
   try {
     const post = await getPostBySlug(slug);
+    const ogImage = (post as unknown as { og_image_url?: string }).og_image_url ?? null;
     return {
       title: post.title,
       description: post.summary || `${post.title} — Atasa Danışmanlık Blog`,
@@ -30,6 +31,15 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
         publishedTime: post.created_at,
         modifiedTime: post.updated_at,
         tags: post.keywords,
+        images: ogImage
+          ? [{ url: ogImage, width: 1536, height: 1024, alt: post.title }]
+          : undefined,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: post.title,
+        description: post.summary || "",
+        images: ogImage ? [ogImage] : undefined,
       },
       alternates: {
         canonical: `https://www.atasakurumsal.com.tr/blog/${slug}`,

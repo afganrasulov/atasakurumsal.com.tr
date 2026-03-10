@@ -1,5 +1,7 @@
 import OpenAI from 'openai';
 import { createPost, updateTopicStatus, type Topic } from './blogService';
+import { generateOGImage } from './ogImageGenerator';
+import { getSupabaseAdmin } from './supabaseAdmin';
 
 function getOpenAI() {
     return new OpenAI({ apiKey: process.env.OPENAI_API_KEY! });
@@ -102,7 +104,7 @@ Güncel bilgileri web araştırması yaparak doğrula ve zenginleştir.`,
             })),
         };
 
-        await createPost({
+        const post = await createPost({
             topic_id: topic.id,
             title: article.title,
             slug: article.slug,
@@ -113,6 +115,19 @@ Güncel bilgileri web araştırması yaparak doğrula ve zenginleştir.`,
             seo_score: article.seo_score,
             schema_json: { article: schemaJson, faq: faqSchema },
         });
+
+        // OG görseli üret (arka planda, hata olursa makale yine de yayınlanır)
+        try {
+            const ogImageUrl = await generateOGImage(article.slug, article.title, article.keywords);
+            if (ogImageUrl) {
+                await getSupabaseAdmin()
+                    .from('posts')
+                    .update({ og_image_url: ogImageUrl })
+                    .eq('id', post.id);
+            }
+        } catch (ogError) {
+            console.error('[OG Image Error]', ogError);
+        }
 
         await updateTopicStatus(topic.id, 'published');
         return { success: true, message: `Makale üretildi: ${article.title}` };

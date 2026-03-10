@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Referanslar",
   description:
-    "Türkiye'nin lider kurumlarından sanat dünyasının en parlak isimlerine kadar, saygın referanslarımızla yabancıların yasal süreçlerinde profesyonel çözüm ortağıyız.",
+    "Türkiye'nin lider kurumlarından en parlak isimlere kadar, on binlerce başarılı işlemle yasal süreçlerinizi güvene taşıyoruz. Gurur duyduğumuz referanslarımız.",
   alternates: {
     canonical: "https://www.atasakurumsal.com.tr/referanslar",
   },

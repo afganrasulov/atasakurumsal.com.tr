@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "İletişim",
   description:
-    "Uzman danışmanlarımız size yardımcı olmaktan memnuniyet duyar. Çalışma izni, ikamet izni ve diğer konularda bize ulaşın.",
+    "Çalışma izni ve kurumsal yabancı personel danışmanlık ihtiyaçlarınız için Atasa'nın uzman hukuk ekibiyle anında iletişime geçin. Size özel çözümler hazırlayalım.",
   alternates: {
     canonical: "https://www.atasakurumsal.com.tr/iletisim",
   },

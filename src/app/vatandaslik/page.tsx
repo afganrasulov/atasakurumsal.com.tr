@@ -16,7 +16,7 @@ import {
 export const metadata: Metadata = {
     title: "Vatandaşlık İşlemleri",
     description:
-        "Türk vatandaşlığı başvurusu — yatırım yoluyla, istisnai ve genel vatandaşlık süreçlerinde profesyonel hukuki destek.",
+        "Yatırım, istisnai durumlar ve genel yollarla Türk Vatandaşlığı kazanım süreçlerinde, A'dan Z'ye profesyonel hukuki rehberlik ve başvuru yönetimi.",
 
   alternates: {
     canonical: "https://www.atasakurumsal.com.tr/vatandaslik",

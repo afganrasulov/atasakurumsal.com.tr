@@ -29,7 +29,7 @@ import { formatPhone } from "@/shared/lib/utils";
 export const metadata: Metadata = {
     title: "Kurumsal Toplu Başvuru | Atasa Danışmanlık",
     description:
-        "50+ yabancı personel istihdam eden kurumsal şirketlere özel toplu çalışma izni başvuru yönetimi. Dedicated hesap yöneticisi, öncelikli destek ve toplu fiyatlandırma.",
+        "50+ yabancı personel istihdam eden kurumsal şirketlere özel toplu çalışma izni yönetimi. Özel müşteri temsilcisi ve butik yasal destek ayrıcalığı.",
 
   alternates: {
     canonical: "https://www.atasakurumsal.com.tr/toplu-basvuru",

@@ -17,7 +17,7 @@ import {
 export const metadata: Metadata = {
     title: "SGK & Bordro Danışmanlık",
     description:
-        "Yabancı personel SGK işlemleri, bordro hesaplamaları, asgari ücret güncellemeleri. Ücretsiz danışmanlık hizmeti.",
+        "Yabancı personelleriniz için SGK tescil ve bordrolama süreçlerinde mevzuata tam uyumlu, risksiz, kurumsal danışmanlık hizmeti sunuyoruz.",
 
   alternates: {
     canonical: "https://www.atasakurumsal.com.tr/sgk-bordro",

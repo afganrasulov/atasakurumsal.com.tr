@@ -17,7 +17,7 @@ import {
 export const metadata: Metadata = {
     title: "İkamet İzni Danışmanlık",
     description:
-        "Türkiye'de kısa dönem, uzun dönem, öğrenci ve aile ikamet izni başvurularında profesyonel danışmanlık hizmeti.",
+        "Yabancılar için kısa dönem, aile, öğrenci ve uzun dönem ikamet (oturma) izni başvurularında garantili ve profesyonel yasal danışmanlık.",
 
   alternates: {
     canonical: "https://www.atasakurumsal.com.tr/ikamet-izni",

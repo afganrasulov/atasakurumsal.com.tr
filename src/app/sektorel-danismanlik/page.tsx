@@ -11,118 +11,109 @@ import {
     GraduationCap,
     ShoppingCart,
     Factory,
-    Utensils,
-    Shirt,
+    CheckCircle2,
+    PlaneTakeoff,
+    Zap
 } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Sektörel Danışmanlık",
+    title: "Sektörel Çalışma İzni Danışmanlığı | Atasa Danışmanlık",
     description:
-        "Tekstil, turizm, yazılım, sağlık, eğitim ve ithalat-ihracat sektörlerinde uzmanlaşmış çalışma izni danışmanlığı.",
-  alternates: {
-    canonical: "https://www.atasakurumsal.com.tr/sektorel-danismanlik",
-  },
+        "Teknoloji, turizm, sağlık ve sanayi gibi kilit sektörlere özel, mevzuatın tüm detaylarına hakim profesyonel çalışma izni danışmanlığı sunuyoruz.",
+    alternates: {
+        canonical: "https://www.atasakurumsal.com.tr/sektorel-danismanlik",
+    },
 };
 
 const sectors = [
     {
-        icon: <Shirt size={28} />,
-        title: "Tekstil & Konfeksiyon",
-        desc: "Tekstil sektöründe yabancı uzman istihdamı için sektöre özel evrak hazırlığı ve mevzuat uyumu.",
-        stats: "250+ başvuru",
-        color: "bg-slate-800",
-        lightColor: "bg-slate-50 text-slate-800 border-slate-200",
+        icon: <Code size={28} />,
+        title: "Bilişim & Teknoloji",
+        desc: "Yazılımcılar, veri mimarları ve IT uzmanları için özel kriterli, hızlı sonuçlanan çalışma izni başvuruları.",
+        color: "bg-blue-600",
+        lightColor: "bg-blue-50 text-blue-600 border-blue-100",
     },
     {
         icon: <Hotel size={28} />,
-        title: "Turizm & Otelcilik",
-        desc: "Otel, restoran ve seyahat acentelerinde yabancı personel çalışma izni danışmanlığı.",
-        stats: "180+ başvuru",
-        color: "bg-sky-600",
-        lightColor: "bg-sky-50 text-sky-600 border-sky-100",
-    },
-    {
-        icon: <Code size={28} />,
-        title: "Yazılım & Teknoloji",
-        desc: "Teknoloji şirketlerinde yabancı yazılımcı ve mühendis istihdamında uzman danışmanlık.",
-        stats: "320+ başvuru",
-        color: "bg-violet-600",
-        lightColor: "bg-violet-50 text-violet-600 border-violet-100",
+        title: "Turizm & Konaklama",
+        desc: "Oteller, acenteler ve restoranlar için dönemsel veya kalıcı yabancı personel/gösteri sanatçısı izinleri.",
+        color: "bg-emerald-600",
+        lightColor: "bg-emerald-50 text-emerald-600 border-emerald-100",
     },
     {
         icon: <Stethoscope size={28} />,
-        title: "Sağlık",
-        desc: "Hastane, klinik ve medikal firmalarında yabancı doktor, hemşire ve teknisyen çalışma izni.",
-        stats: "90+ başvuru",
+        title: "Sağlık & Medikal",
+        desc: "Sağlık Bakanlığı ön izin süreçleriyle entegre; yabancı doktor, hemşire ve uzman teknisyen başvuruları.",
         color: "bg-rose-600",
         lightColor: "bg-rose-50 text-rose-600 border-rose-100",
     },
     {
         icon: <GraduationCap size={28} />,
-        title: "Eğitim",
-        desc: "Üniversite, dil okulu ve özel eğitim kurumlarında yabancı öğretmen ve akademisyen istihdamı.",
-        stats: "150+ başvuru",
+        title: "Eğitim Hizmetleri",
+        desc: "MEB ve YÖK denklikleri / ön izinleri alınarak yabancı öğretmen ve akademisyenlerin istihdam süreçleri.",
         color: "bg-amber-600",
         lightColor: "bg-amber-50 text-amber-600 border-amber-100",
     },
     {
         icon: <ShoppingCart size={28} />,
         title: "İthalat & İhracat",
-        desc: "Dış ticaret firmalarında yabancı personel ve yönetici çalışma izni başvuru danışmanlığı.",
-        stats: "200+ başvuru",
+        desc: "Bölge yöneticisi, satış müdürü gibi uzman kadrolar için Doğrudan Yabancı Yatırım teşviklerinden faydalanılan başvurular.",
         color: "bg-teal-600",
         lightColor: "bg-teal-50 text-teal-600 border-teal-100",
     },
     {
-        icon: <Utensils size={28} />,
-        title: "Gıda & Restoran",
-        desc: "Restoran, kafe ve gıda üretim tesislerinde yabancı aşçı ve uzman personel istihdamı.",
-        stats: "130+ başvuru",
-        color: "bg-orange-600",
-        lightColor: "bg-orange-50 text-orange-600 border-orange-100",
-    },
-    {
         icon: <Factory size={28} />,
         title: "Üretim & Sanayi",
-        desc: "Fabrika ve üretim tesislerinde yabancı mühendis, tekniker ve operatör çalışma izni.",
-        stats: "170+ başvuru",
-        color: "bg-zinc-700",
-        lightColor: "bg-zinc-50 text-zinc-700 border-zinc-200",
+        desc: "Ağır sanayi, montaj işleri, fabrika teknisyenleri ve üretim mühendisleri için kalifiye işgücü çözümleri.",
+        color: "bg-slate-700",
+        lightColor: "bg-slate-50 text-slate-700 border-slate-200",
     },
+    {
+        icon: <PlaneTakeoff size={28} />,
+        title: "Havacılık",
+        desc: "Yabancı pilot ve havacılık uzmanları için SHGM ön izin koordinasyonuyla hızlı çalışma izni işlemleri.",
+        color: "bg-sky-600",
+        lightColor: "bg-sky-50 text-sky-600 border-sky-100",
+    }
 ];
 
 const advantages = [
-    "Sektöre özel evrak listesi ve başvuru stratejisi",
-    "İlgili bakanlık ve meslek kuruluşu bağlantıları",
-    "Sektörel kota ve kısıtlamaların takibi",
-    "Daha önce onaylanan pozisyon referansları",
-    "Sektöre göre asgari ücret ve maaş danışmanlığı",
-    "Ret durumunda itiraz ve yeniden başvuru desteği",
+    "Sektöre özel bakanlık kriterlerini (örn: Turizmdeki istisnalar) lehinize çeviriyoruz.",
+    "Ön izin gerektiren mesleklerde (Sağlık, Eğitim, Havacılık) kurumsal entegrasyon sağlıyoruz.",
+    "İthalat-ihracat hacminize göre kota muafiyetlerini denetliyoruz.",
+    "Bilişim sektöründeki maaş istisnalarını kullanarak şirket/prim maliyetini optimize ediyoruz.",
+    "Sektörel kriz veya acil personel ihtiyaçlarında hızlandırılmış süreç yönetimi uyguluyoruz.",
+    "Her sektör için referans ve emsal teşkil eden dosyalarımızla başarı garantisi sunuyoruz."
 ];
 
 export default function SektorelDanismanlikPage() {
     return (
         <PageTransition>
             {/* Hero */}
-            <section className="py-20 bg-gradient-to-br from-slate-800 to-slate-950 text-white">
-                <div className="container mx-auto px-4">
-                    <div className="max-w-4xl">
-                        <Badge variant="blue" className="bg-white/20 text-white mb-4">
-                            SEKTÖREL UZMANLIK
+            <section className="py-20 bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#020617] text-white relative overflow-hidden">
+                <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=1920')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+                <div className="container mx-auto px-4 relative z-10">
+                    <div className="max-w-4xl pt-10 pb-16">
+                        <Badge variant="blue" className="bg-slate-800 text-blue-400 border border-slate-700 mb-6">
+                            NİŞ UZMANLIK
                         </Badge>
-                        <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6">
-                            Sektörel Danışmanlık
+                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tight mb-6 leading-[1.1]">
+                            Sektörel <br />
+                            <span className="text-blue-400">Danışmanlık</span>
                         </h1>
-                        <p className="text-slate-300 text-xl leading-relaxed max-w-3xl">
-                            Tekstil, turizm, yazılım, sağlık, eğitim ve daha birçok sektörde
-                            uzmanlaşmış çalışma izni danışmanlığı sunuyoruz.
+                        <p className="text-slate-300 text-lg md:text-xl leading-relaxed max-w-3xl mb-10 font-medium">
+                            Her sektörün dinamikleri ve Bakanlık nezdindeki değerlendirme kriterleri farklıdır. Bilişimden turizme, sağlıktan sanayiye uzanan geniş yelpazede, sektörünüzün dilinden anlayan uzman yaklaşımlar sunuyoruz.
                         </p>
-                        <Link
-                            href="/iletisim"
-                            className="mt-8 inline-flex items-center gap-3 bg-white text-slate-900 px-10 py-4 rounded-full font-bold hover:bg-slate-50 transition-all shadow-xl active:scale-95"
-                        >
-                            Sektörünüzü Seçin <ArrowRight size={20} />
-                        </Link>
+                        <div className="flex flex-wrap gap-4 mt-8">
+                            <Link
+                                href="/iletisim"
+                                className="inline-flex items-center gap-3 bg-blue-500 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-400 transition-all shadow-xl shadow-blue-500/20 active:scale-95"
+                            >
+                                Sektörünüze Özel Teklif <ArrowRight size={20} />
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -132,24 +123,21 @@ export default function SektorelDanismanlikPage() {
                 <div className="container mx-auto px-4">
                     <SectionHeader
                         badge="Sektörler"
-                        title="Uzmanlaştığımız Sektörler"
-                        description="Her sektörün kendine özgü mevzuat gereklilikleri vardır. Biz hepsini biliyoruz."
+                        title="Hangi Sektörlere Tam Hakimiyet Sağlıyoruz?"
+                        description="Sektörel kodlar, iş tanımı eşleşmeleri ve özel teşvikler baz alınarak hazırlanan spesifik başvurular."
                     />
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                         {sectors.map((sector, i) => (
-                            <div key={i} className="group bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col">
-                                <div className={`w-14 h-14 rounded-2xl ${sector.lightColor} border flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                            <div key={i} className="group bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:shadow-xl hover:-translate-y-2 hover:border-blue-200 transition-all duration-500 flex flex-col">
+                                <div className={`w-16 h-16 rounded-2xl ${sector.lightColor} border flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                                     {sector.icon}
                                 </div>
-                                <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
                                     {sector.title}
                                 </h3>
-                                <p className="text-slate-500 text-sm leading-relaxed flex-grow mb-4">
+                                <p className="text-slate-600 leading-relaxed text-sm flex-grow">
                                     {sector.desc}
                                 </p>
-                                <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                                    {sector.stats}
-                                </div>
                             </div>
                         ))}
                     </div>
@@ -157,38 +145,51 @@ export default function SektorelDanismanlikPage() {
             </section>
 
             {/* Advantages */}
-            <section className="py-24 bg-slate-50">
-                <div className="container mx-auto px-4">
-                    <SectionHeader
-                        badge="Avantajlar"
-                        title="Sektörel Danışmanlık Farkımız"
-                        description="Her sektör için özelleştirilmiş başvuru stratejisi geliştiriyoruz."
-                    />
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl">
-                        {advantages.map((adv, i) => (
-                            <div key={i} className="flex items-start gap-4 p-6 bg-white rounded-2xl border border-slate-100 hover:shadow-lg transition-all">
-                                <div className="w-10 h-10 rounded-xl bg-slate-800 text-white flex items-center justify-center shrink-0 font-bold text-sm">
-                                    {i + 1}
-                                </div>
-                                <p className="text-slate-700 font-medium leading-relaxed pt-1.5">{adv}</p>
-                            </div>
-                        ))}
+            <section className="py-24 bg-slate-50 relative overflow-hidden">
+                <div className="container mx-auto px-4 relative z-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <SectionHeader
+                                badge="Neden Sektörel Uzmanlık?"
+                                title="Genel Geçer Değil, Nokta Atışı Stratejiler"
+                            />
+                            <p className="text-slate-600 leading-relaxed text-lg mb-8">
+                                Standart bir çalışma izni başvurusu, teknoloji firmasının ihtiyaçlarıyla bir turizm firmasının ihtiyaçlarını aynı sepete koyduğunda genellikle hüsranla sonuçlanır. Atasa Kurumsal olarak başvurularınızı "Terzi İşi" şekillendiriyoruz.
+                            </p>
+                            <Link href="/referanslar" className="font-bold text-blue-600 flex items-center gap-2 hover:text-blue-700 transition-colors">
+                                Sektörel Referanslarımızı İnceleyin <ArrowRight size={18} />
+                            </Link>
+                        </div>
+                        <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                            <h3 className="flex items-center gap-2 text-slate-900 font-bold text-xl mb-6">
+                                <Zap className="text-amber-500" />
+                                Bize Kazandıran Farklarımız
+                            </h3>
+                            <ul className="space-y-4">
+                                {advantages.map((adv, i) => (
+                                    <li key={i} className="flex gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                                        <CheckCircle2 className="text-blue-500 shrink-0 mt-0.5" size={20} />
+                                        <span className="text-slate-700 font-medium text-sm leading-relaxed">{adv}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
 
             {/* CTA */}
-            <section className="py-16 bg-slate-900 text-white text-center">
+            <section className="py-20 bg-slate-900 text-white text-center">
                 <div className="container mx-auto px-4">
-                    <h2 className="text-3xl font-bold mb-4">Sektörünüze Özel Danışmanlık Alın</h2>
-                    <p className="mb-8 text-slate-400 max-w-2xl mx-auto">
-                        Sektörünüzün gerekliliklerini bilen ekibimizle çalışma izni sürecinizi hızlandırın.
+                    <h2 className="text-3xl lg:text-4xl font-black mb-6">Firmanıza Özel Analiz İsteyin</h2>
+                    <p className="mb-10 text-slate-400 max-w-2xl mx-auto text-lg pt-2 leading-relaxed">
+                        Mevcut yabancı personel alım sürecinizde takıldığınız noktaları sektör uzmanlarımızla paylaşın, size en uygun yasal rotayı hemen çizelim.
                     </p>
                     <Link
                         href="/iletisim"
-                        className="bg-white text-slate-900 px-10 py-4 rounded-full font-bold hover:bg-slate-50 transition-all shadow-lg inline-flex items-center gap-2"
+                        className="bg-blue-600 text-white px-10 py-4 rounded-full font-bold hover:bg-blue-500 transition-all shadow-xl shadow-blue-600/20 inline-flex items-center gap-3 text-lg"
                     >
-                        İletişime Geçin <ArrowRight size={18} />
+                        Danışmanlık Alın <ArrowRight size={20} />
                     </Link>
                 </div>
             </section>

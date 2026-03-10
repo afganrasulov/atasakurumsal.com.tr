@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageTransition } from "@/shared/components/PageTransition";
 import { SectionHeader } from "@/shared/components/ui/SectionHeader";
+import { Breadcrumb } from "@/shared/components/ui/Breadcrumb";
 import { Badge } from "@/shared/components/ui/Badge";
 import {
     ArrowRight,
@@ -128,6 +129,7 @@ export default function TopluBasvuruPage() {
                 </div>
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl">
+                        <Breadcrumb items={[{ label: "Hizmetlerimiz", href: "/hizmetlerimiz" }, { label: "Toplu Başvuru" }]} />
                         <Badge variant="blue" className="bg-blue-500/20 text-blue-300 border-blue-400/30 mb-4">
                             KURUMSAL ÇÖZÜM
                         </Badge>

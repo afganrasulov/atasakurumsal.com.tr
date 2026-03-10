@@ -43,6 +43,19 @@ LİNK KURALLARI (ÇOK ÖNEMLİ):
 - Üçüncü parti, özel sektör veya haber sitelerine asla link verme
 - Rakip danışmanlık firmalarına link verme
 
+SİTE İÇİ LİNKLEME (INTERNAL LINKING) KURALLARI (ZORUNLU):
+Aşağıdaki anahtar kelimelerden herhangi biri makale metninde geçtiğinde, kelimeyi hemen kalın yap ve ilgili sayfaya HTML formatında link ver.
+1. "çalışma izni", "yabancılara çalışma izni" -> <a href="/yabancilara-calisma-izni"><strong>yabancılara çalışma izni</strong></a>
+2. "oturma izni", "ikamet izni" -> <a href="/ikamet-izni"><strong>ikamet izni</strong></a>
+3. "şirket kuruluşu", "yabancı ortaklı şirket" -> <a href="/sirket-kurulusu"><strong>şirket kuruluşu</strong></a>
+4. "vatandaşlık", "türk vatandaşlığı" -> <a href="/vatandaslik"><strong>Türk vatandaşlığı</strong></a>
+5. "çalışma izni uzatma" -> <a href="/calisma-izni-uzatma"><strong>çalışma izni uzatma</strong></a>
+6. "çalışma izni transferi" -> <a href="/calisma-izni-transferi"><strong>çalışma izni transferi</strong></a>
+7. "turkuaz kart" -> <a href="/turkuaz-kart"><strong>Turkuaz Kart</strong></a>
+8. "yabancı bakıcı", "bakıcı çalışma izni" -> <a href="/yabanci-bakici-calisma-izni"><strong>yabancı bakıcı çalışma izni</strong></a>
+9. "sgk", "bordro", "yabancı sgk" -> <a href="/sgk-bordro"><strong>SGK ve bordro</strong></a>
+*Uyarı: Bir kelimeyi makale boyunca en fazla 2 kere linkle, fazlası spam olur.*
+
 İÇERİK ZENGİNLEŞTİRME:
 - Önemli bilgileri, tarihleri ve sayısal verileri <strong> etiketi ile vurgula
 - Alt bölümlerde numaralı veya madde işaretli listeler (<ol>, <ul>) kullan

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageTransition } from "@/shared/components/PageTransition";
 import { SectionHeader } from "@/shared/components/ui/SectionHeader";
+import { Breadcrumb } from "@/shared/components/ui/Breadcrumb";
 import { Badge } from "@/shared/components/ui/Badge";
 import {
     CheckCircle,
@@ -88,6 +89,7 @@ export default function VatandaslikPage() {
             <section className="py-20 bg-gradient-to-br from-red-600 to-red-800 text-white">
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl">
+                        <Breadcrumb items={[{ label: "Hizmetlerimiz", href: "/hizmetlerimiz" }, { label: "Vatandaşlık İşlemleri" }]} />
                         <Badge variant="blue" className="bg-white/20 text-white mb-4">
                             VATANDAŞLIK
                         </Badge>

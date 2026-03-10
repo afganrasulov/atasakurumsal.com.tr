@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageTransition } from "@/shared/components/PageTransition";
 import { SectionHeader } from "@/shared/components/ui/SectionHeader";
+import { Breadcrumb } from "@/shared/components/ui/Breadcrumb";
 import { Badge } from "@/shared/components/ui/Badge";
 import {
     ArrowRight,
@@ -96,6 +97,7 @@ export default function SektorelDanismanlikPage() {
 
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl pt-10 pb-16">
+                        <Breadcrumb items={[{ label: "Hizmetlerimiz", href: "/hizmetlerimiz" }, { label: "Sektörel Danışmanlık" }]} />
                         <Badge variant="blue" className="bg-slate-800 text-blue-400 border border-slate-700 mb-6">
                             NİŞ UZMANLIK
                         </Badge>

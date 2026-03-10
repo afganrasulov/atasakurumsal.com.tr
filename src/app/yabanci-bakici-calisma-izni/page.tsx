@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageTransition } from "@/shared/components/PageTransition";
 import { SectionHeader } from "@/shared/components/ui/SectionHeader";
+import { Breadcrumb } from "@/shared/components/ui/Breadcrumb";
 import { Badge } from "@/shared/components/ui/Badge";
 import {
     Heart,
@@ -48,6 +49,7 @@ export default function YabanciBakiciCalismaIzniPage() {
                 
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl pt-10 pb-16">
+                        <Breadcrumb items={[{ label: "Hizmetlerimiz", href: "/hizmetlerimiz" }, { label: "Yabancı Bakıcı Çalışma İzni" }]} />
                         <Badge variant="blue" className="bg-rose-100 text-rose-600 border border-rose-200 mb-6">
                             EV HİZMETLERİ & BAKIM
                         </Badge>

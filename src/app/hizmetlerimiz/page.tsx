@@ -21,6 +21,8 @@ import {
     Shield,
     Clock,
     Headphones,
+    Heart,
+    Target
 } from "lucide-react";
 import { NetworkBackground } from "@/shared/components/NetworkBackground";
 import { COMPANY_INFO } from "@/shared/constants/company";
@@ -50,10 +52,26 @@ const itemVariants = {
 /* ── Services Data ───────────────────────────────────────── */
 const services = [
     {
+        icon: <Target size={26} />,
+        title: "Sektörel Danışmanlık",
+        desc: "Turizmden sağlığa, eğitimden teknolojiye özel sektör dinamiklerine uygun terzi işi çalışma izni ve teşvik danışmanlığı.",
+        href: "/sektorel-danismanlik",
+        gradient: "from-blue-600 to-indigo-500",
+        accentColor: "79, 70, 229",
+    },
+    {
+        icon: <Heart size={26} />,
+        title: "Yabancı Bakıcı Çalışma İzni",
+        desc: "Ev personeli, bebek ve yaşlı bakıcısı istihdamında yasal süreçlerin eksiksiz ve güvenli şekilde yönetilmesi.",
+        href: "/yabanci-bakici-calisma-izni",
+        gradient: "from-rose-500 to-pink-500",
+        accentColor: "236, 72, 153",
+    },
+    {
         icon: <Briefcase size={26} />,
-        title: "Yabancı Çalışma İzni",
+        title: "Yabancılara Çalışma İzni Alma",
         desc: "Binlerce müşterimiz istihdam edecekleri yabancı personeller için bizi tercih ettiler, yanılmadılar. %98 başarı oranı ile başvurularınızı yönetiyoruz.",
-        href: "/calisma-izni",
+        href: "/yabancilara-calisma-izni",
         gradient: "from-blue-500 to-cyan-400",
         accentColor: "59, 130, 246",
         badge: "En Popüler",

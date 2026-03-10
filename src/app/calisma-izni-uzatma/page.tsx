@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageTransition } from "@/shared/components/PageTransition";
 import { SectionHeader } from "@/shared/components/ui/SectionHeader";
+import { Breadcrumb } from "@/shared/components/ui/Breadcrumb";
 import { Badge } from "@/shared/components/ui/Badge";
 import {
     ArrowRight,
@@ -67,6 +68,7 @@ export default function CalismaIzniUzatmaPage() {
 
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl pt-10 pb-16">
+                        <Breadcrumb items={[{ label: "Hizmetlerimiz", href: "/hizmetlerimiz" }, { label: "Çalışma İzni Uzatma" }]} />
                         <Badge variant="blue" className="bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 mb-6">
                             SÜRE UZATIMI & TAKİP
                         </Badge>

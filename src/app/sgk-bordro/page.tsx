@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageTransition } from "@/shared/components/PageTransition";
 import { SectionHeader } from "@/shared/components/ui/SectionHeader";
+import { Breadcrumb } from "@/shared/components/ui/Breadcrumb";
 import { Badge } from "@/shared/components/ui/Badge";
 import {
     CheckCircle,
@@ -67,6 +68,7 @@ export default function SgkBordroPage() {
             <section className="py-20 bg-gradient-to-br from-purple-600 to-purple-800 text-white">
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl">
+                        <Breadcrumb items={[{ label: "Hizmetlerimiz", href: "/hizmetlerimiz" }, { label: "SGK ve Yabancı Bordrolama" }]} />
                         <Badge variant="blue" className="bg-white/20 text-white mb-4">
                             ÜCRETSİZ HİZMET
                         </Badge>

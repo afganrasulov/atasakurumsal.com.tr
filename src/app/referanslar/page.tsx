@@ -168,7 +168,7 @@ function ReferenceCard({ item, index }: { item: ReferenceItem; index: number }) 
                     /* eslint-disable-next-line @next/next/no-img-element */
                     <img
                         src={item.logo}
-                        alt={item.name}
+                        alt={`Atasa Danışmanlık Referansı - ${item.name}`}
                         className={`w-full h-full transition-all duration-1000 ease-out ${isVIP
                                 ? "object-cover group-hover:scale-110"
                                 : "object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"

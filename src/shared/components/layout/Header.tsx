@@ -54,7 +54,7 @@ export function Header() {
                         <div className="relative group-hover:scale-105 transition-transform duration-500 overflow-hidden rounded-lg">
                             <Image
                                 src="/images/atasa-logo.png"
-                                alt="Atasa Danışmanlık Logo"
+                                alt="Atasa Danışmanlık - Yabancı Çalışma ve İkamet İzni Ofisi"
                                 width={160}
                                 height={57}
                                 priority
@@ -121,7 +121,7 @@ export function Header() {
                     <div className="relative overflow-hidden rounded-lg">
                         <Image
                             src="/images/atasa-logo.png"
-                            alt="Atasa Danışmanlık Logo"
+                            alt="Atasa Danışmanlık - Yabancı Çalışma ve İkamet İzni Ofisi"
                             width={130}
                             height={46}
                             priority

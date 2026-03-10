@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import { getKeywords, createTopic, getTopicsByKeywordId } from './blogService';
+import { getKeywords, createTopic, getTopicsByKeywordId, addKeyword } from './blogService';
 
 function getOpenAI() {
     return new OpenAI({ apiKey: process.env.OPENAI_API_KEY! });
@@ -91,5 +91,44 @@ Sonuçları şu JSON formatında döndür:
             .sort((a, b) => b.relevance_score - a.relevance_score);
     } catch {
         return [];
+    }
+}
+
+export async function autoPopulateKeywords(minThreshold = 5): Promise<number> {
+    const keywords = await getKeywords();
+    const activeCount = keywords.filter((k) => k.is_active).length;
+
+    if (activeCount >= minThreshold) {
+        return 0; // Yeterli keyword var
+    }
+
+    const response = await getOpenAI().responses.create({
+        model: 'gpt-5-mini',
+        instructions: `Sen SEO uzmanısın. Türkiye'de yabancıların çalışma izni, ikamet izni, vatandaşlık ve şirket kuruluşu süreçleriyle ilgilenen danışmanlık firması Atasa Danışmanlık için aranma hacmi yüksek ama rekabeti düşük "long-tail keyword" üreteceksin. 
+Daha önce kullanılan kelimelerle çakışmaması için kelimeleri birbirinden çok farklı, soru tipli veya niş kitlelere yönelik (örn: İngiliz vatandaşları için Türkiye çalışma izni) üret.
+Sonucu SADECE JSON array olarak döndür: ["keyword1", "keyword2", "keyword3"]`,
+        input: `Bana Türkiye pazarından 5 adet yeni, niş ve etkili long-tail anahtar kelime üret.`,
+    });
+
+    try {
+        const text = response.output_text;
+        const jsonMatch = text.match(/\[[\s\S]*\]/);
+        if (!jsonMatch) return 0;
+
+        const newKeywords = JSON.parse(jsonMatch[0]) as string[];
+        const existingNames = new Set(keywords.map(k => k.keyword.toLowerCase()));
+        
+        let addedCount = 0;
+        for (const kw of newKeywords) {
+            const cleanKw = kw.trim().toLowerCase();
+            if (cleanKw && !existingNames.has(cleanKw)) {
+                await addKeyword(cleanKw);
+                addedCount++;
+            }
+        }
+        return addedCount;
+    } catch (err) {
+        console.error("[autoPopulateKeywords Error]", err);
+        return 0;
     }
 }

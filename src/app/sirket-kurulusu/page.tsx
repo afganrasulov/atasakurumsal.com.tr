@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageTransition } from "@/shared/components/PageTransition";
 import { SectionHeader } from "@/shared/components/ui/SectionHeader";
+import { Breadcrumb } from "@/shared/components/ui/Breadcrumb";
 import { Badge } from "@/shared/components/ui/Badge";
 import {
     ArrowRight,
@@ -76,6 +77,7 @@ export default function SirketKurulusuPage() {
 
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl pt-10 pb-16">
+                        <Breadcrumb items={[{ label: "Hizmetlerimiz", href: "/hizmetlerimiz" }, { label: "Şirket Kuruluşu Danışmanlığı" }]} />
                         <Badge variant="blue" className="bg-violet-500/20 text-violet-300 border border-violet-400/30 mb-6">
                             TİCARİ DANIŞMANLIK
                         </Badge>

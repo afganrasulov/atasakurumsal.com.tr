@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { discoverTopics } from '@/lib/blog/keywordDiscovery';
+import { discoverTopics, autoPopulateKeywords } from '@/lib/blog/keywordDiscovery';
 import { generateArticle } from '@/lib/blog/seoOptimizer';
 import {
     getTopics,
@@ -23,11 +23,19 @@ export async function POST(request: NextRequest) {
     }
 
     const errors: string[] = [];
+    let populated = 0;
     let discovered = 0;
     let approved = 0;
     let generated = 0;
 
     try {
+        // ── Adım 0: Keyword Auto-Population ──
+        try {
+            populated = await autoPopulateKeywords(5);
+        } catch (err) {
+            const msg = err instanceof Error ? err.message : 'Keyword populate hatası';
+            errors.push(`[Populate] ${msg}`);
+        }
         // ── Adım 1: Topic Discovery ──
         try {
             const discoverResult = await discoverTopics();
@@ -83,6 +91,7 @@ export async function POST(request: NextRequest) {
 
         return NextResponse.json({
             success: true,
+            populated,
             discovered,
             approved,
             generated,

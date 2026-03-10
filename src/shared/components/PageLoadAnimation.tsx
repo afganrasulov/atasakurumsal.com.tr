@@ -35,7 +35,7 @@ export function PageLoadAnimation() {
                         >
                             <Image
                                 src="/images/atasa-logo.png"
-                                alt="Atasa Danışmanlık Logo"
+                                alt="Atasa Danışmanlık - Yabancı Çalışma ve İkamet İzni Ofisi"
                                 width={260}
                                 height={93}
                                 priority

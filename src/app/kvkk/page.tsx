@@ -5,6 +5,10 @@ import { SectionHeader } from "@/shared/components/ui/SectionHeader";
 export const metadata: Metadata = {
     title: "KVKK Aydınlatma Metni",
     description: "Atasa Danışmanlık KVKK Aydınlatma Metni — kişisel veri koruma politikası.",
+
+  alternates: {
+    canonical: "https://www.atasakurumsal.com.tr/kvkk",
+  },
 };
 
 export default function KVKKPage() {

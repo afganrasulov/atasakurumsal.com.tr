@@ -21,6 +21,10 @@ export const metadata: Metadata = {
     type: "website",
     locale: "tr_TR",
   },
+
+  alternates: {
+    canonical: "https://www.atasakurumsal.com.tr/blog",
+  },
 };
 
 export const revalidate = 300; // ISR: 5 dakika

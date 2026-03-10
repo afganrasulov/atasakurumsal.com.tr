@@ -199,9 +199,9 @@ interface ServiceInfo {
 
 const SERVICES: ServiceInfo[] = [
   {
-    name: "Çalışma İzni Danışmanlığı",
+    name: "Yabancılara Çalışma İzni Alma",
     slug: "calisma-izni",
-    description: "Türkiye'de yabancı personel çalışma izni başvuru ve takip hizmeti.",
+    description: "Türkiye'de çalışmak isteyen yabancı personel için çalışma izni başvuru, takip ve danışmanlık hizmeti.",
   },
   {
     name: "İkamet İzni Danışmanlığı",
@@ -209,14 +209,19 @@ const SERVICES: ServiceInfo[] = [
     description: "Kısa ve uzun dönem ikamet izni başvuru danışmanlığı.",
   },
   {
-    name: "Çalışma İzni Uzatma",
+    name: "Yabancılar İçin Çalışma İzni Uzatma",
     slug: "calisma-izni-uzatma",
-    description: "Mevcut çalışma izinlerinin süre uzatma işlemleri.",
+    description: "Mevcut çalışma izinlerinin süre uzatma işlemleri. Yabancı çalışanlarınızın izinlerini sorunsuz uzatın.",
   },
   {
     name: "Çalışma İzni Transferi",
     slug: "calisma-izni-transferi",
-    description: "İşveren değişikliğinde çalışma izni transfer işlemleri.",
+    description: "Yabancı çalışanların bir şirketten başka bir şirkete çalışma izni transfer işlemleri. İşveren değişikliğinde kesintisiz geçiş.",
+  },
+  {
+    name: "Yabancı Bakıcı Çalışma İzni",
+    slug: "calisma-izni",
+    description: "Evinizde çalışacak yabancı bakıcı, temizlikçi ve ev personeli için çalışma izni alma hizmeti.",
   },
   {
     name: "Türk Vatandaşlığı Danışmanlığı",
@@ -237,6 +242,16 @@ const SERVICES: ServiceInfo[] = [
     name: "SGK ve Bordro Hizmetleri",
     slug: "sgk-bordro",
     description: "Yabancı personel SGK kaydı, bordro ve yasal uyum hizmetleri.",
+  },
+  {
+    name: "Şirket Kuruluşu Danışmanlığı",
+    slug: "sirket-kurulusu",
+    description: "Yabancı yatırımcılar için Türkiye'de şirket kuruluşu ve ticari danışmanlık hizmetleri.",
+  },
+  {
+    name: "Sektörel Danışmanlık",
+    slug: "sektorel-danismanlik",
+    description: "Farklı sektörlere özel yabancı personel istihdamı ve çalışma izni danışmanlığı.",
   },
 ];
 

@@ -17,6 +17,10 @@ export const metadata: Metadata = {
     title: "Çalışma İzni Transferi | Atasa Danışmanlık",
     description:
         "Çalışma izni transferi ile personellerinizin işyeri veya şube değişikliğini hukuki süreçlere uygun şekilde gerçekleştiriyoruz.",
+
+  alternates: {
+    canonical: "https://www.atasakurumsal.com.tr/calisma-izni-transferi",
+  },
 };
 
 const transferTypes = [

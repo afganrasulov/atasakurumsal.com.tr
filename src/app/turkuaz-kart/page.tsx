@@ -18,6 +18,10 @@ export const metadata: Metadata = {
     title: "Turkuaz Kart",
     description:
         "Nitelikli yabancılar için Turkuaz Kart başvurusu — süresiz çalışma ve ikamet izni. Profesyonel hukuki danışmanlık.",
+
+  alternates: {
+    canonical: "https://www.atasakurumsal.com.tr/turkuaz-kart",
+  },
 };
 
 const benefits = [

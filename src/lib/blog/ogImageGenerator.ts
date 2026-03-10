@@ -17,27 +17,30 @@ export async function generateOGImage(
         const topicContext = keywords.slice(0, 3).join(', ');
 
         const response = await getOpenAI().images.generate({
-            model: 'gpt-image-1',
+            model: 'dall-e-3',
             prompt: `Notion-style black and white scribble illustration. Simple, clean, minimalist hand-drawn sketch style. 
 Topic: ${title} (${topicContext}).
 The illustration should represent the concept visually without any text, letters, or words.
 Style: thin black ink lines on pure white background, like a Notion app illustration.
 Simple characters or objects related to the topic. No text anywhere. No labels. No captions.
 Clean white space around the illustration. Modern, friendly, informative doodle art style.`,
-            size: '1536x1024',
-            quality: 'medium',
+            size: '1792x1024',
+            quality: 'standard',
             n: 1,
         });
 
-        if (!response.data?.[0]?.b64_json) return null;
+        const imageUrl = response.data?.[0]?.url;
+        if (!imageUrl) return null;
 
-        const imageBuffer = Buffer.from(response.data[0].b64_json, 'base64');
+        // URL'den görseli indir
+        const imageResponse = await fetch(imageUrl);
+        const imageBuffer = Buffer.from(await imageResponse.arrayBuffer());
 
-        // Supabase Storage'a yükle
-        const fileName = `og/${slug}.png`;
+        // Supabase Storage'a yükle (public-assets bucket, atasa_kurumsal_web_sitesi klasörü)
+        const fileName = `atasa_kurumsal_web_sitesi/blog-images/${slug}.png`;
         const { error: uploadError } = await getSupabaseAdmin()
             .storage
-            .from('blog-images')
+            .from('public-assets')
             .upload(fileName, imageBuffer, {
                 contentType: 'image/png',
                 upsert: true,
@@ -51,7 +54,7 @@ Clean white space around the illustration. Modern, friendly, informative doodle 
         // Public URL oluştur
         const { data: urlData } = getSupabaseAdmin()
             .storage
-            .from('blog-images')
+            .from('public-assets')
             .getPublicUrl(fileName);
 
         return urlData.publicUrl;

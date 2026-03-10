@@ -19,6 +19,10 @@ export const metadata: Metadata = {
     title: "Çalışma İzni Danışmanlık",
     description:
         "Çalışma izni danışmanlık hizmetimiz, şirketimizin %100 uzmanı olduğu konuların başında gelmektedir. Binlerce başarılı başvuru.",
+
+  alternates: {
+    canonical: "https://www.atasakurumsal.com.tr/calisma-izni",
+  },
 };
 
 const processSteps = [

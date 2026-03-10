@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useRef, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { Send, CheckCircle2, Loader2 } from "lucide-react";
 import { SectionHeading } from "@/shared/components/ui/SectionHeading";
 import { SectionSubtitle } from "@/shared/components/ui/SectionSubtitle";
+import { supabase } from "@/shared/lib/supabase";
 
 const SERVICES_OPTIONS = [
     "Çalışma İzni",
@@ -17,14 +18,33 @@ const SERVICES_OPTIONS = [
 export function InlineMiniForm() {
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
+    const nameRef = useRef<HTMLInputElement>(null);
+    const phoneRef = useRef<HTMLInputElement>(null);
+    const serviceRef = useRef<HTMLSelectElement>(null);
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-            setSubmitted(true);
-        }, 1500);
+
+        const name = nameRef.current?.value ?? "";
+        const phone = phoneRef.current?.value ?? "";
+        const service = serviceRef.current?.value ?? "";
+
+        const { error } = await supabase.rpc("submit_contact_form", {
+            p_name: name,
+            p_phone: phone,
+            p_email: "",
+            p_message: `[Hızlı Form] Hizmet: ${service}`,
+        });
+
+        setLoading(false);
+
+        if (error) {
+            alert("Gönderilemedi, lütfen tekrar deneyin.");
+            return;
+        }
+
+        setSubmitted(true);
     };
 
     return (
@@ -116,6 +136,7 @@ export function InlineMiniForm() {
                                         }}
                                     >
                                         <input
+                                            ref={nameRef}
                                             type="text"
                                             placeholder="Adınız Soyadınız"
                                             required
@@ -128,6 +149,7 @@ export function InlineMiniForm() {
                                             onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; }}
                                         />
                                         <input
+                                            ref={phoneRef}
                                             type="tel"
                                             placeholder="Telefon Numaranız"
                                             required
@@ -140,6 +162,7 @@ export function InlineMiniForm() {
                                             onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; }}
                                         />
                                         <select
+                                            ref={serviceRef}
                                             required
                                             defaultValue=""
                                             className="w-full rounded-xl px-5 py-3.5 text-white font-medium focus:outline-none transition-all appearance-none cursor-pointer"

@@ -34,6 +34,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.atasakurumsal.com.tr"),
   title: {
     default: "Atasa Danışmanlık | Çalışma İzni & İkamet Danışmanlık",
     template: "%s | Atasa Danışmanlık",
@@ -43,13 +44,21 @@ export const metadata: Metadata = {
   keywords: [
     "çalışma izni",
     "çalışma izni danışmanlık",
+    "yabancılar için çalışma izni",
     "ikamet izni",
-    "yabancı çalışma izni",
-    "atasa kurumsal",
-    "vatandaşlık",
-    "yabancı personel",
+    "oturma izni",
+    "vatandaşlık danışmanlığı",
   ],
   authors: [{ name: "Atasa Danışmanlık" }],
+  creator: "Atasa Danışmanlık",
+  publisher: "Atasa Danışmanlık",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "/",
+  },
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,

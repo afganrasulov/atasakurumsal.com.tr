@@ -19,6 +19,9 @@ export const metadata: Metadata = {
     title: "Sektörel Danışmanlık",
     description:
         "Tekstil, turizm, yazılım, sağlık, eğitim ve ithalat-ihracat sektörlerinde uzmanlaşmış çalışma izni danışmanlığı.",
+  alternates: {
+    canonical: "https://www.atasakurumsal.com.tr/sektorel-danismanlik",
+  },
 };
 
 const sectors = [

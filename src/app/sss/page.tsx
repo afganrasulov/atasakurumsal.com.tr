@@ -6,6 +6,10 @@ import { Accordion } from "@/shared/components/ui/Accordion";
 export const metadata: Metadata = {
     title: "Sık Sorulan Sorular",
     description: "Atasa Danışmanlık hakkında sık sorulan sorular ve cevapları.",
+
+  alternates: {
+    canonical: "https://www.atasakurumsal.com.tr/sss",
+  },
 };
 
 const faqItems = [

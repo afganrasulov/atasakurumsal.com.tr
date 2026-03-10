@@ -18,6 +18,10 @@ export const metadata: Metadata = {
     title: "Çalışma İzni Uzatma | Atasa Danışmanlık",
     description:
         "Çalışma izni uzatma başvurularınızı zamanında ve sorunsuz yönetiyoruz. Gecikme riski olmadan, belge hazırlığından sonuca kadar tam destek.",
+
+  alternates: {
+    canonical: "https://www.atasakurumsal.com.tr/calisma-izni-uzatma",
+  },
 };
 
 const extensionSteps = [

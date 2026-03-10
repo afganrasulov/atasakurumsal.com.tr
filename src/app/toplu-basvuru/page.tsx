@@ -30,6 +30,10 @@ export const metadata: Metadata = {
     title: "Kurumsal Toplu Başvuru | Atasa Danışmanlık",
     description:
         "50+ yabancı personel istihdam eden kurumsal şirketlere özel toplu çalışma izni başvuru yönetimi. Dedicated hesap yöneticisi, öncelikli destek ve toplu fiyatlandırma.",
+
+  alternates: {
+    canonical: "https://www.atasakurumsal.com.tr/toplu-basvuru",
+  },
 };
 
 const challenges = [

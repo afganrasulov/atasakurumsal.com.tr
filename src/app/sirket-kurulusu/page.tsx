@@ -18,6 +18,10 @@ export const metadata: Metadata = {
     title: "Yabancı Ortaklı Şirket Kuruluşu",
     description:
         "Türkiye'de yabancı ortaklı şirket kuruluşu, ticaret odası kayıtları, vergi dairesi işlemleri. A'dan Z'ye profesyonel destek.",
+
+  alternates: {
+    canonical: "https://www.atasakurumsal.com.tr/sirket-kurulusu",
+  },
 };
 
 const companyTypes = [

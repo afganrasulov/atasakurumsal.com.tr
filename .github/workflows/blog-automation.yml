@@ -1,0 +1,39 @@
+name: Blog Automation — Daily Content Pipeline
+
+on:
+  schedule:
+    # Her gün 06:00 UTC (09:00 Türkiye saati)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Manuel tetikleme
+
+jobs:
+  automate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Trigger Blog Automation
+        env:
+          SITE_URL: ${{ secrets.SITE_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          echo "🚀 Blog otomasyon başlatılıyor..."
+          
+          RESPONSE=$(curl -s -w "\n%{http_code}" \
+            -X POST \
+            -H "Authorization: Bearer $CRON_SECRET" \
+            -H "Content-Type: application/json" \
+            "$SITE_URL/api/blog/automate")
+          
+          HTTP_CODE=$(echo "$RESPONSE" | tail -n 1)
+          BODY=$(echo "$RESPONSE" | head -n -1)
+          
+          echo "📦 HTTP Status: $HTTP_CODE"
+          echo "📄 Response: $BODY"
+          
+          if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ]; then
+            echo "✅ Otomasyon başarıyla tamamlandı"
+          else
+            echo "❌ Otomasyon hatası: $HTTP_CODE"
+            exit 1
+          fi

@@ -10,6 +10,7 @@ import { FloatingWhatsApp } from "@/shared/components/FloatingWhatsApp";
 import { StickyCTABar } from "@/shared/components/StickyCTABar";
 import { ExitIntentPopup } from "@/shared/components/ExitIntentPopup";
 import { PageLoadAnimation } from "@/shared/components/PageLoadAnimation";
+import { JsonLd } from "@/shared/components/seo/JsonLd";
 import {
   generateOrganizationSchema,
   generateLocalBusinessSchema,
@@ -57,16 +58,21 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  openGraph: {
+    type: "website",
+    locale: "tr_TR",
+    siteName: "Atasa Danışmanlık",
+    images: ["/api/og"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/api/og"],
+  },
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
     title: "Atasa Danışmanlık",
-  },
-  openGraph: {
-    type: "website",
-    locale: "tr_TR",
-    siteName: "Atasa Danışmanlık",
   },
 };
 
@@ -102,22 +108,10 @@ export default function RootLayout({
         </noscript>
         {/* End Google Tag Manager (noscript) */}
         {/* Global Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateOrganizationSchema()) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateLocalBusinessSchema()) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateWebSiteSchema()) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateServiceSchemas()) }}
-        />
+        <JsonLd schema={generateOrganizationSchema()} />
+        <JsonLd schema={generateLocalBusinessSchema()} />
+        <JsonLd schema={generateWebSiteSchema()} />
+        <JsonLd schema={generateServiceSchemas()} />
         <QueryProvider>
           <div className="min-h-screen flex flex-col">
             <Header />

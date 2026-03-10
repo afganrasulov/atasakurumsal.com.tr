@@ -69,7 +69,7 @@ export function WhyUsSection() {
                             id="why-atasa"
                             className="text-blue-600 font-bold tracking-wide uppercase mb-3 text-sm"
                         >
-                            Neden Atasa Kurumsal?
+                            Neden Atasa Danışmanlık?
                         </h2>
                         <h3 className="text-4xl font-bold mb-6 text-slate-900 leading-tight">
                             Güvenilirlik Bizim Birinci Önceliğimiz

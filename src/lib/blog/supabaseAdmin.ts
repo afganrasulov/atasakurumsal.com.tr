@@ -13,7 +13,7 @@ export function getSupabaseAdmin() {
         }
 
         _client = createClient(supabaseUrl, supabaseServiceKey, {
-            db: { schema: 'atasa_kurumsal_blog' },
+            db: { schema: 'atasa_kurumsal' },
         });
     }
 

@@ -356,9 +356,9 @@ discovered ──► approved ──► generating ──► published
 
 ## Veritabanı Şeması
 
-Tüm tablolar Supabase `atasa_kurumsal_blog` schema'sında:
+Tüm tablolar Supabase `atasa_kurumsal` schema'sında:
 
-### `atasa_kurumsal_blog.keywords`
+### `atasa_kurumsal.keywords`
 
 | Kolon | Tip | Açıklama |
 |-------|-----|----------|
@@ -368,7 +368,7 @@ Tüm tablolar Supabase `atasa_kurumsal_blog` schema'sında:
 | created_at | timestamptz | Oluşturulma tarihi |
 | updated_at | timestamptz | Güncellenme tarihi |
 
-### `atasa_kurumsal_blog.topics`
+### `atasa_kurumsal.topics`
 
 | Kolon | Tip | Açıklama |
 |-------|-----|----------|
@@ -381,7 +381,7 @@ Tüm tablolar Supabase `atasa_kurumsal_blog` schema'sında:
 | created_at | timestamptz | Oluşturulma tarihi |
 | updated_at | timestamptz | Güncellenme tarihi |
 
-### `atasa_kurumsal_blog.posts`
+### `atasa_kurumsal.posts`
 
 | Kolon | Tip | Açıklama |
 |-------|-----|----------|
@@ -462,6 +462,6 @@ web/src/
 ## Supabase Yapılandırması
 
 - **Proje ID**: `khlvkvusavalbkjrwbsy`
-- **Schema**: `atasa_kurumsal_blog`
+- **Schema**: `atasa_kurumsal`
 - **PostgREST**: Schema `pgrst.db_schemas` üzerinden expose edilmiştir
 - **İzinler**: `service_role`, `anon`, `authenticated` rolleri için tam erişim verilmiştir

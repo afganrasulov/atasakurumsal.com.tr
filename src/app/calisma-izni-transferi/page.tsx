@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Çalışma İzni Transferi | Atasa Kurumsal",
+    title: "Çalışma İzni Transferi | Atasa Danışmanlık",
     description:
         "Çalışma izni transferi ile personellerinizin işyeri veya şube değişikliğini hukuki süreçlere uygun şekilde gerçekleştiriyoruz.",
 };

@@ -45,8 +45,9 @@ export async function POST(request: NextRequest) {
             total: approvedTopics.length,
             errors,
         });
-    } catch (error) {
-        const message = error instanceof Error ? error.message : 'Bilinmeyen hata';
+    } catch (error: unknown) {
+        console.error('[Blog Generate API Error]', JSON.stringify(error, Object.getOwnPropertyNames(error as object)));
+        const message = error instanceof Error ? error.message : JSON.stringify(error);
         return NextResponse.json({ error: message }, { status: 500 });
     }
 }

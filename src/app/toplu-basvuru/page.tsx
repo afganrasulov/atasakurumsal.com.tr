@@ -27,7 +27,7 @@ import { COMPANY_INFO } from "@/shared/constants/company";
 import { formatPhone } from "@/shared/lib/utils";
 
 export const metadata: Metadata = {
-    title: "Kurumsal Toplu Başvuru | Atasa Kurumsal",
+    title: "Kurumsal Toplu Başvuru | Atasa Danışmanlık",
     description:
         "50+ yabancı personel istihdam eden kurumsal şirketlere özel toplu çalışma izni başvuru yönetimi. Dedicated hesap yöneticisi, öncelikli destek ve toplu fiyatlandırma.",
 };
@@ -194,10 +194,10 @@ export default function TopluBasvuruPage() {
                                         {challenge.icon}
                                     </div>
                                     <span className={`text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full ${challenge.severity === "Kritik"
-                                            ? "bg-red-100 text-red-700"
-                                            : challenge.severity === "Yüksek"
-                                                ? "bg-orange-100 text-orange-700"
-                                                : "bg-yellow-100 text-yellow-700"
+                                        ? "bg-red-100 text-red-700"
+                                        : challenge.severity === "Yüksek"
+                                            ? "bg-orange-100 text-orange-700"
+                                            : "bg-yellow-100 text-yellow-700"
                                         }`}>
                                         {challenge.severity}
                                     </span>

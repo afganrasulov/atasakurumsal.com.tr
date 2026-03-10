@@ -35,7 +35,7 @@ export function PageLoadAnimation() {
                         >
                             <Image
                                 src="/images/atasa-logo.png"
-                                alt="Atasa Kurumsal Logo"
+                                alt="Atasa Danışmanlık Logo"
                                 width={260}
                                 height={93}
                                 priority

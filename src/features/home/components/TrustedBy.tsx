@@ -9,8 +9,8 @@ const STORAGE_BASE =
 
 const TRUSTED_LOGOS = [
     { name: "Cengiz Holding", file: "cengiz-holding.png" },
-    { name: "NAMA Yapı", file: "nama-yapi.png" },
-    { name: "Twins Company", file: "twins-company.png" },
+    { name: "NAMA Yapı", file: "nama-yapi.png", hasBg: true },
+    { name: "Twins Company", file: "twins-company.png", hasBg: true },
     { name: "Maxx", file: "maxx.png" },
     { name: "TOR Industry", file: "tor-industry.png" },
     { name: "Gusto", file: "gusto.png" },
@@ -20,13 +20,28 @@ const TRUSTED_LOGOS = [
     { name: "Techno Tool", file: "techno-tool.png" },
     { name: "Bayraktar Ambalaj", file: "bayraktar-ambalaj.png" },
     { name: "Nüans Group", file: "nuans-group.png" },
-    { name: "CIAR Medical", file: "ciar-medical.png" },
-    { name: "Nef Teknik", file: "nef-teknik.png" },
+    { name: "CIAR Medical", file: "ciar-medical.png", hasBg: true },
+    { name: "Nef Teknik", file: "nef-teknik.png", hasBg: true },
 ];
 
 export function TrustedBy() {
     return (
-        <section className="py-16 bg-white border-t border-slate-100 overflow-hidden">
+        <section
+            className="py-36 overflow-hidden relative"
+            style={{
+                background: "linear-gradient(180deg, #020617 0%, #0f172a 50%, #020617 100%)",
+            }}
+        >
+            {/* Pexels background — partnership */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+                src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1"
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full object-cover opacity-[0.04] blur-sm pointer-events-none select-none"
+                loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#020617] via-transparent to-[#020617]" />
             <div className="container mx-auto px-4 mb-8">
                 <motion.div
                     className="flex flex-col md:flex-row items-center justify-between gap-4"
@@ -36,16 +51,16 @@ export function TrustedBy() {
                     transition={{ duration: 0.5 }}
                 >
                     <div>
-                        <span className="text-xs font-black text-slate-400 uppercase tracking-widest">
+                        <span className="text-[11px] font-bold text-slate-600 uppercase tracking-[0.2em]">
                             Güvenilir Ortaklıklar
                         </span>
-                        <h3 className="text-xl font-bold text-slate-900 mt-1">
+                        <h3 className="text-xl font-semibold text-white mt-1 tracking-tight">
                             Bize Güvenen Firmalar
                         </h3>
                     </div>
                     <Link
                         href="/referanslar"
-                        className="flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700 transition-colors group"
+                        className="flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors group"
                     >
                         Tüm Referanslarımız
                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -53,13 +68,19 @@ export function TrustedBy() {
                 </motion.div>
             </div>
 
-            {/* Improved Marquee with CSS animation for better performance */}
+            {/* Marquee */}
             <div className="relative">
-                {/* Fade edges */}
-                <div className="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
-                <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
+                {/* Fade edges — dark */}
+                <div
+                    className="absolute left-0 top-0 bottom-0 w-40 z-10 pointer-events-none"
+                    style={{ background: "linear-gradient(to right, #0f172a, transparent)" }}
+                />
+                <div
+                    className="absolute right-0 top-0 bottom-0 w-40 z-10 pointer-events-none"
+                    style={{ background: "linear-gradient(to left, #0f172a, transparent)" }}
+                />
 
-                {/* Row 1 - Left to right */}
+                {/* Row 1 */}
                 <div className="marquee-track mb-6">
                     <div className="marquee-content">
                         {[...TRUSTED_LOGOS, ...TRUSTED_LOGOS].map((logo, index) => (
@@ -68,7 +89,11 @@ export function TrustedBy() {
                                 <img
                                     src={`${STORAGE_BASE}/${logo.file}`}
                                     alt={logo.name}
-                                    className="h-12 w-auto object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                                    className={`h-12 w-auto object-contain transition-all duration-500 ${
+                                        logo.hasBg
+                                            ? "opacity-40 grayscale group-hover:opacity-80 group-hover:grayscale-0 rounded-md"
+                                            : "opacity-30 group-hover:opacity-70 brightness-0 invert"
+                                    }`}
                                     loading="lazy"
                                 />
                             </div>
@@ -76,7 +101,7 @@ export function TrustedBy() {
                     </div>
                 </div>
 
-                {/* Row 2 - Right to left (reversed) */}
+                {/* Row 2 */}
                 <div className="marquee-track-reverse">
                     <div className="marquee-content-reverse">
                         {[...TRUSTED_LOGOS.slice().reverse(), ...TRUSTED_LOGOS.slice().reverse()].map((logo, index) => (
@@ -85,7 +110,11 @@ export function TrustedBy() {
                                 <img
                                     src={`${STORAGE_BASE}/${logo.file}`}
                                     alt={logo.name}
-                                    className="h-10 w-auto object-contain grayscale opacity-30 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                                    className={`h-10 w-auto object-contain transition-all duration-500 ${
+                                        logo.hasBg
+                                            ? "opacity-30 grayscale group-hover:opacity-70 group-hover:grayscale-0 rounded-md"
+                                            : "opacity-20 group-hover:opacity-60 brightness-0 invert"
+                                    }`}
                                     loading="lazy"
                                 />
                             </div>
@@ -94,7 +123,6 @@ export function TrustedBy() {
                 </div>
             </div>
 
-            {/* CSS keyframe animations */}
             <style jsx>{`
                 .marquee-track {
                     overflow: hidden;

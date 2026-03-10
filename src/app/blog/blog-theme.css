@@ -1,0 +1,341 @@
+/* ═══════════════════════════════════════════
+   Blog Theme — Editorial / Magazine Style
+   Completely different from the dark corporate theme
+   ═══════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&display=swap');
+
+/* ── Color palette custom properties ── */
+:root {
+  --blog-bg: #faf8f5;
+  --blog-bg-alt: #f5f0eb;
+  --blog-surface: #ffffff;
+  --blog-border: #e8e2d9;
+  --blog-border-light: #f0ebe4;
+  --blog-text: #2c2520;
+  --blog-text-muted: #8a7e74;
+  --blog-text-light: #b5aa9e;
+  --blog-accent: #b45309;
+  --blog-accent-light: #d97706;
+  --blog-accent-bg: rgba(180, 83, 9, 0.06);
+  --blog-accent-border: rgba(180, 83, 9, 0.15);
+  --blog-serif: 'Playfair Display', 'Georgia', serif;
+  --blog-body: 'Source Serif 4', 'Georgia', serif;
+  --blog-shadow-sm: 0 1px 3px rgba(44, 37, 32, 0.04), 0 1px 2px rgba(44, 37, 32, 0.06);
+  --blog-shadow-md: 0 4px 16px rgba(44, 37, 32, 0.06), 0 2px 6px rgba(44, 37, 32, 0.04);
+  --blog-shadow-lg: 0 10px 40px rgba(44, 37, 32, 0.08), 0 4px 12px rgba(44, 37, 32, 0.04);
+  --blog-shadow-warm: 0 8px 32px rgba(180, 83, 9, 0.08);
+}
+
+/* ── Blog-specific prose/typography ── */
+.blog-editorial-content {
+  font-family: var(--blog-body);
+  color: var(--blog-text);
+  font-size: 1.125rem;
+  line-height: 1.9;
+  letter-spacing: -0.01em;
+}
+
+/* ── Drop Cap — İlk paragrafın ilk harfi ── */
+.blog-editorial-content > p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--blog-serif);
+  font-size: 3.5em;
+  line-height: 0.8;
+  font-weight: 700;
+  color: var(--blog-accent);
+  margin-right: 0.08em;
+  margin-top: 0.05em;
+}
+
+.blog-editorial-content h1,
+.blog-editorial-content h2,
+.blog-editorial-content h3,
+.blog-editorial-content h4 {
+  font-family: var(--blog-serif);
+  color: var(--blog-text);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 2.5em;
+  margin-bottom: 0.8em;
+  line-height: 1.25;
+}
+
+.blog-editorial-content h2 {
+  font-size: 1.75rem;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid var(--blog-border-light);
+  position: relative;
+}
+
+.blog-editorial-content h2::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blog-accent), var(--blog-accent-light));
+  border-radius: 3px;
+}
+
+.blog-editorial-content h3 {
+  font-size: 1.35rem;
+  padding-left: 0.75em;
+  border-left: 3px solid var(--blog-accent-light);
+}
+
+.blog-editorial-content p {
+  margin-bottom: 1.5em;
+}
+
+.blog-editorial-content a {
+  color: var(--blog-accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(180, 83, 9, 0.3);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+  font-weight: 500;
+}
+
+.blog-editorial-content a:hover {
+  color: var(--blog-accent-light);
+  text-decoration-color: var(--blog-accent);
+  text-decoration-thickness: 2px;
+}
+
+.blog-editorial-content a[href^="http"]::after {
+  content: " ↗";
+  font-size: 0.7em;
+  opacity: 0.5;
+}
+
+.blog-editorial-content strong {
+  color: var(--blog-text);
+  font-weight: 600;
+  background: linear-gradient(180deg, transparent 55%, rgba(251, 191, 36, 0.3) 55%, rgba(251, 191, 36, 0.3) 90%, transparent 90%);
+  padding: 0 2px;
+  border-radius: 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.blog-editorial-content mark {
+  background: linear-gradient(180deg, transparent 40%, rgba(251, 191, 36, 0.35) 40%, rgba(251, 191, 36, 0.35) 85%, transparent 85%);
+  color: inherit;
+  padding: 0 3px;
+  border-radius: 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.blog-editorial-content blockquote {
+  border-left: 3px solid var(--blog-accent);
+  padding: 1em 1.5em;
+  margin: 2em 0;
+  background: var(--blog-accent-bg);
+  border-radius: 0 12px 12px 0;
+  font-style: italic;
+  color: var(--blog-text-muted);
+}
+
+.blog-editorial-content ul,
+.blog-editorial-content ol {
+  padding-left: 0.5em;
+  margin-bottom: 1.5em;
+  list-style: none;
+}
+
+.blog-editorial-content ul > li,
+.blog-editorial-content ol > li {
+  margin-bottom: 0.6em;
+  padding: 0.5em 0.75em 0.5em 1.8em;
+  position: relative;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.blog-editorial-content ul > li:hover,
+.blog-editorial-content ol > li:hover {
+  background: var(--blog-accent-bg);
+}
+
+/* Unordered list — bullet yerine accent dot */
+.blog-editorial-content ul > li::before {
+  content: '';
+  position: absolute;
+  left: 0.5em;
+  top: 1em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blog-accent), var(--blog-accent-light));
+}
+
+/* Ordered list — otomatik numara */
+.blog-editorial-content ol {
+  counter-reset: blog-counter;
+}
+
+.blog-editorial-content ol > li {
+  counter-increment: blog-counter;
+}
+
+.blog-editorial-content ol > li::before {
+  content: counter(blog-counter);
+  position: absolute;
+  left: 0.3em;
+  top: 0.45em;
+  width: 1.4em;
+  height: 1.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75em;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, var(--blog-accent), var(--blog-accent-light));
+  border-radius: 50%;
+}
+
+.blog-editorial-content code {
+  background: var(--blog-bg-alt);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: var(--blog-accent);
+}
+
+.blog-editorial-content pre {
+  background: #2c2520 !important;
+  border-radius: 12px;
+  padding: 1.5em;
+  margin: 2em 0;
+  overflow-x: auto;
+}
+
+.blog-editorial-content pre code {
+  background: none;
+  color: #e8e2d9;
+  padding: 0;
+}
+
+.blog-editorial-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  font-size: 0.95rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--blog-shadow-sm);
+}
+
+.blog-editorial-content th {
+  background: linear-gradient(135deg, #2c2520, #3d322a);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.85em 1.2em;
+  color: #faf8f5;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.blog-editorial-content td {
+  padding: 0.85em 1.2em;
+  border-bottom: 1px solid var(--blog-border-light);
+}
+
+/* Zebra satırlar */
+.blog-editorial-content tr:nth-child(even) td {
+  background: var(--blog-accent-bg);
+}
+
+.blog-editorial-content tr:hover td {
+  background: rgba(180, 83, 9, 0.1);
+  transition: background 0.2s;
+}
+
+/* ── Anahtar kelime highlight ── */
+.blog-editorial-content .keyword-highlight {
+  background: linear-gradient(180deg, transparent 55%, rgba(180, 83, 9, 0.15) 55%, rgba(180, 83, 9, 0.15) 90%, transparent 90%);
+  padding: 0 1px;
+  border-radius: 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.blog-editorial-content img {
+  border-radius: 12px;
+  margin: 2em 0;
+  box-shadow: var(--blog-shadow-md);
+}
+
+/* ── Animations ── */
+@keyframes blogFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blogInkSpread {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 80px;
+    opacity: 1;
+  }
+}
+
+@keyframes blogShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes blogFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.blog-fade-up {
+  animation: blogFadeUp 0.7s ease-out both;
+}
+
+.blog-ink-line {
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blog-accent), var(--blog-accent-light), transparent);
+  animation: blogInkSpread 1s ease-out 0.5s both;
+  border-radius: 2px;
+}
+
+/* ── Decorative elements ── */
+.blog-dot-pattern {
+  background-image: radial-gradient(circle, var(--blog-border) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.blog-grain {
+  position: relative;
+}
+
+.blog-grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}

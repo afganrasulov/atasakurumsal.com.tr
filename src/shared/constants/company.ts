@@ -1,9 +1,9 @@
 export const COMPANY_INFO = {
-  name: "Atasa Kurumsal Danışmanlık",
-  shortName: "Atasa Kurumsal",
+  name: "Atasa Danışmanlık",
+  shortName: "Atasa",
   phone: "+90 850 308 69 98",
-  email: "info@atasakurumsal.com",
-  emailAlt: "bilgi@atasakurumsal.com",
+  email: "support@atasa.tr",
+  emailAlt: "info@atasa.tr",
   website: "https://www.atasakurumsal.com.tr",
   foundedYear: 2012,
   experienceYears: 12,
@@ -11,16 +11,26 @@ export const COMPANY_INFO = {
   offices: {
     istanbul: {
       city: "İstanbul",
-      address: "İstiklal Cd. No 187 Beyoğlu İş Merkezi Kat:1 D:133 Beyoğlu / İstanbul",
+      address: "Mecidiyeköy mah. Raşit Rıza sk. Ahmet Esin İş Merkezi NO:4 K:2 D:7 Şişli/İstanbul",
+      phone: "+90 850 308 69 98",
+      googleMapsUrl: "https://www.google.com/maps/place/Atasa+Dan%C4%B1%C5%9Fmanl%C4%B1k+Hizmetleri+LTD.+%C5%9ET%C4%B0./@41.067297,28.9998846,17z/data=!4m6!3m5!1s0x14cab746724d84fd:0x1f99dbde2ff1d769!8m2!3d41.0672466!4d28.9998853!16s%2Fg%2F11rfcycng9",
     },
-    ankara: {
-      city: "Ankara",
-      address: "Kızılırmak Mahallesi Next Level Loft Ofis No: 4/27 Kat: 9 Çankaya / Ankara",
+    askabat: {
+      city: "Aşkabat",
+      address: "Berkararlyk etrap / G.Kuliyev köçe/ Beyençli N70, Gat 3 309, Ashgabat, Türkmenistan",
+      phone: "+993 637 816 52",
+      googleMapsUrl: "",
+    },
+    baku: {
+      city: "Bakü",
+      address: "Tivi Plaza, Əhməd Rəcəbli Küçəsi, 1/10 Nəriman Nərimanov, Baku 1006, Azərbaycan",
+      phone: "+994 51 823 44 10",
+      googleMapsUrl: "",
     },
   },
   hours: {
-    weekday: "10:00 - 19:00",
-    saturday: "Kapalı",
+    weekday: "09:00 - 18:00",
+    saturday: "10:00 - 13:00",
     sunday: "Kapalı",
   },
   social: {
@@ -45,6 +55,7 @@ export const NAV_LINKS = [
   { href: "/hizmetlerimiz", label: "Hizmetlerimiz" },
   { href: "/hakkimizda", label: "Hakkımızda" },
   { href: "/referanslar", label: "Referanslar" },
+  { href: "/blog", label: "Blog" },
   { href: "/sss", label: "SSS" },
   { href: "/iletisim", label: "İletişim" },
 ] as const;

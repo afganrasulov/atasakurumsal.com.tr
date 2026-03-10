@@ -3,6 +3,8 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { Send, CheckCircle2, Loader2 } from "lucide-react";
+import { SectionHeading } from "@/shared/components/ui/SectionHeading";
+import { SectionSubtitle } from "@/shared/components/ui/SectionSubtitle";
 
 const SERVICES_OPTIONS = [
     "Çalışma İzni",
@@ -19,7 +21,6 @@ export function InlineMiniForm() {
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        // Simulate submission
         setTimeout(() => {
             setLoading(false);
             setSubmitted(true);
@@ -27,10 +28,26 @@ export function InlineMiniForm() {
     };
 
     return (
-        <section className="py-20 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 relative overflow-hidden">
-            {/* Decorative elements */}
-            <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-            <div className="absolute bottom-0 right-0 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+        <section
+            className="py-40 relative overflow-hidden"
+            style={{
+                background: "linear-gradient(180deg, #020617 0%, #0f172a 50%, #020617 100%)",
+            }}
+        >
+            {/* Pexels background — contact / support */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+                src="https://images.pexels.com/photos/821754/pexels-photo-821754.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1"
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full object-cover opacity-[0.04] blur-sm pointer-events-none select-none"
+                loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#020617] via-transparent to-[#020617]" />
+            <div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] pointer-events-none"
+                style={{ background: "radial-gradient(ellipse, rgba(59,130,246,0.06) 0%, transparent 70%)" }}
+            />
 
             <div className="container mx-auto px-4 relative z-10">
                 <div className="max-w-4xl mx-auto">
@@ -41,18 +58,18 @@ export function InlineMiniForm() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                         >
-                            <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight mb-4">
+                            <SectionHeading className="text-3xl md:text-4xl mb-4">
                                 Hemen Bilgi Alın
-                            </h2>
-                            <p className="text-blue-100 text-lg font-medium leading-relaxed mb-6">
+                            </SectionHeading>
+                            <SectionSubtitle className="mb-6">
                                 Formu doldurun, uzman danışmanımız sizi{" "}
-                                <strong className="text-white">
+                                <strong className="text-slate-200">
                                     15 dakika içinde
                                 </strong>{" "}
                                 arasın.
-                            </p>
-                            <div className="flex items-center gap-3 text-blue-200 text-sm font-bold">
-                                <CheckCircle2 size={16} className="text-emerald-300" />
+                            </SectionSubtitle>
+                            <div className="flex items-center gap-3 text-slate-500 text-sm font-medium">
+                                <CheckCircle2 size={16} className="text-blue-400" />
                                 Tamamen ücretsiz ön değerlendirme
                             </div>
                         </motion.div>
@@ -65,74 +82,103 @@ export function InlineMiniForm() {
                             transition={{ delay: 0.1 }}
                         >
                             {submitted ? (
-                                <motion.div
-                                    className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 text-center"
-                                    initial={{ scale: 0.9, opacity: 0 }}
-                                    animate={{ scale: 1, opacity: 1 }}
-                                >
-                                    <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <CheckCircle2 size={32} className="text-white" />
-                                    </div>
-                                    <h3 className="text-xl font-black text-white mb-2">
-                                        Talebiniz Alındı!
-                                    </h3>
-                                    <p className="text-blue-100 font-medium">
-                                        Danışmanımız en kısa sürede sizi arayacak.
-                                    </p>
-                                </motion.div>
+                                <div className="rounded-[20px] p-[1.5px]" style={{ background: "linear-gradient(135deg, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0.05) 50%, rgba(59,130,246,0.15) 100%)" }}>
+                                    <motion.div
+                                        className="rounded-[19px] p-8 text-center"
+                                        style={{ background: "linear-gradient(135deg, #131c2e 0%, #0f172a 100%)" }}
+                                        initial={{ scale: 0.9, opacity: 0 }}
+                                        animate={{ scale: 1, opacity: 1 }}
+                                    >
+                                        <div
+                                            className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                                            style={{
+                                                background: "rgba(59,130,246,0.1)",
+                                                border: "1px solid rgba(59,130,246,0.15)",
+                                            }}
+                                        >
+                                            <CheckCircle2 size={32} className="text-blue-400" />
+                                        </div>
+                                        <h3 className="text-xl font-black text-white mb-2">
+                                            Talebiniz Alındı!
+                                        </h3>
+                                        <p className="text-slate-400 font-normal">
+                                            Danışmanımız en kısa sürede sizi arayacak.
+                                        </p>
+                                    </motion.div>
+                                </div>
                             ) : (
-                                <form
-                                    onSubmit={handleSubmit}
-                                    className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 space-y-4"
-                                >
-                                    <input
-                                        type="text"
-                                        placeholder="Adınız Soyadınız"
-                                        required
-                                        className="w-full bg-white/10 border border-white/20 rounded-xl px-5 py-3.5 text-white placeholder:text-blue-200/60 font-medium focus:outline-none focus:border-white/40 focus:bg-white/15 transition-all"
-                                    />
-                                    <input
-                                        type="tel"
-                                        placeholder="Telefon Numaranız"
-                                        required
-                                        className="w-full bg-white/10 border border-white/20 rounded-xl px-5 py-3.5 text-white placeholder:text-blue-200/60 font-medium focus:outline-none focus:border-white/40 focus:bg-white/15 transition-all"
-                                    />
-                                    <select
-                                        required
-                                        defaultValue=""
-                                        className="w-full bg-white/10 border border-white/20 rounded-xl px-5 py-3.5 text-white font-medium focus:outline-none focus:border-white/40 focus:bg-white/15 transition-all appearance-none cursor-pointer"
+                                <div className="rounded-[20px] p-[1.5px]" style={{ background: "linear-gradient(135deg, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0.05) 50%, rgba(59,130,246,0.15) 100%)" }}>
+                                    <form
+                                        onSubmit={handleSubmit}
+                                        className="rounded-[19px] p-8 space-y-4"
+                                        style={{
+                                            background: "linear-gradient(135deg, #131c2e 0%, #0f172a 100%)",
+                                        }}
                                     >
-                                        <option value="" disabled className="text-slate-900">
-                                            Hizmet Seçin
-                                        </option>
-                                        {SERVICES_OPTIONS.map((s) => (
-                                            <option
-                                                key={s}
-                                                value={s}
-                                                className="text-slate-900"
-                                            >
-                                                {s}
+                                        <input
+                                            type="text"
+                                            placeholder="Adınız Soyadınız"
+                                            required
+                                            className="w-full rounded-xl px-5 py-3.5 text-white placeholder:text-slate-600 font-medium focus:outline-none transition-all"
+                                            style={{
+                                                background: "rgba(255,255,255,0.04)",
+                                                border: "1px solid rgba(255,255,255,0.08)",
+                                            }}
+                                            onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(59,130,246,0.3)"; }}
+                                            onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; }}
+                                        />
+                                        <input
+                                            type="tel"
+                                            placeholder="Telefon Numaranız"
+                                            required
+                                            className="w-full rounded-xl px-5 py-3.5 text-white placeholder:text-slate-600 font-medium focus:outline-none transition-all"
+                                            style={{
+                                                background: "rgba(255,255,255,0.04)",
+                                                border: "1px solid rgba(255,255,255,0.08)",
+                                            }}
+                                            onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(59,130,246,0.3)"; }}
+                                            onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; }}
+                                        />
+                                        <select
+                                            required
+                                            defaultValue=""
+                                            className="w-full rounded-xl px-5 py-3.5 text-white font-medium focus:outline-none transition-all appearance-none cursor-pointer"
+                                            style={{
+                                                background: "rgba(255,255,255,0.04)",
+                                                border: "1px solid rgba(255,255,255,0.08)",
+                                            }}
+                                            onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(59,130,246,0.3)"; }}
+                                            onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; }}
+                                        >
+                                            <option value="" disabled className="bg-slate-900 text-slate-400">
+                                                Hizmet Seçin
                                             </option>
-                                        ))}
-                                    </select>
-                                    <button
-                                        type="submit"
-                                        disabled={loading}
-                                        className="w-full bg-white text-blue-700 py-4 rounded-xl font-black text-lg flex items-center justify-center gap-2 hover:bg-blue-50 transition-all shadow-xl hover:shadow-2xl active:scale-[0.98] disabled:opacity-70 cursor-pointer"
-                                    >
-                                        {loading ? (
-                                            <>
-                                                <Loader2 size={20} className="animate-spin" />
-                                                Gönderiliyor...
-                                            </>
-                                        ) : (
-                                            <>
-                                                <Send size={18} />
-                                                Beni Arayın
-                                            </>
-                                        )}
-                                    </button>
-                                </form>
+                                            {SERVICES_OPTIONS.map((s) => (
+                                                <option key={s} value={s} className="bg-slate-900 text-white">
+                                                    {s}
+                                                </option>
+                                            ))}
+                                        </select>
+                                        <button
+                                            type="submit"
+                                            disabled={loading}
+                                            className="w-full bg-white text-slate-900 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 hover:bg-slate-100 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 cursor-pointer"
+                                            style={{ boxShadow: "0 0 30px rgba(255,255,255,0.08)" }}
+                                        >
+                                            {loading ? (
+                                                <>
+                                                    <Loader2 size={20} className="animate-spin" />
+                                                    Gönderiliyor...
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <Send size={18} />
+                                                    Beni Arayın
+                                                </>
+                                            )}
+                                        </button>
+                                    </form>
+                                </div>
                             )}
                         </motion.div>
                     </div>

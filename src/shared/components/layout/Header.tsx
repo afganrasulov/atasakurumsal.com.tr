@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
 import { COMPANY_INFO, NAV_LINKS } from "@/shared/constants/company";
@@ -50,14 +51,26 @@ export function Header() {
                 >
                     {/* Logo */}
                     <Link href="/" className="flex items-center group" aria-label="Ana Sayfa">
-                        <div className="relative group-hover:scale-105 transition-transform duration-500">
+                        <div className="relative group-hover:scale-105 transition-transform duration-500 overflow-hidden rounded-lg">
                             <Image
                                 src="/images/atasa-logo.png"
-                                alt="Atasa Kurumsal Logo"
+                                alt="Atasa Danışmanlık Logo"
                                 width={160}
                                 height={57}
                                 priority
                                 className="h-10 w-auto object-contain"
+                            />
+                            {/* Shimmer Effect */}
+                            <motion.div
+                                className="absolute inset-0 top-0 bottom-0 w-2/3 bg-gradient-to-r from-transparent via-white/50 to-transparent skew-x-[-25deg] pointer-events-none z-10"
+                                initial={{ left: "-150%", opacity: 0 }}
+                                animate={{ left: "250%", opacity: [0, 1, 0] }}
+                                transition={{
+                                    repeat: Infinity,
+                                    repeatDelay: 6,
+                                    duration: 1.5,
+                                    ease: "easeInOut",
+                                }}
                             />
                         </div>
                     </Link>
@@ -93,7 +106,7 @@ export function Header() {
                         <a
                             href={`tel:${formatPhone(COMPANY_INFO.phone)}`}
                             aria-label={`Bizi arayın: ${COMPANY_INFO.phone}`}
-                            className="group relative px-6 py-2.5 rounded-full font-black text-xs uppercase tracking-widest transition-all duration-300 bg-slate-900 text-white hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/30 flex items-center gap-2 active:scale-95"
+                            className="group relative px-6 py-2.5 rounded-full font-black text-xs uppercase tracking-widest transition-all duration-300 bg-blue-950 text-white hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/30 flex items-center gap-2 active:scale-95"
                         >
                             <Phone size={16} className="fill-current" />
                             <span>Hemen Ara</span>
@@ -105,14 +118,28 @@ export function Header() {
             {/* Mobile Header */}
             <div className="md:hidden fixed top-0 w-full z-50 bg-white/90 backdrop-blur-2xl border-b border-slate-100 px-4 py-2 flex justify-between items-center shadow-sm">
                 <Link href="/" className="flex items-center" aria-label="Ana Sayfa">
-                    <Image
-                        src="/images/atasa-logo.png"
-                        alt="Atasa Kurumsal Logo"
-                        width={130}
-                        height={46}
-                        priority
-                        className="h-8 w-auto object-contain"
-                    />
+                    <div className="relative overflow-hidden rounded-lg">
+                        <Image
+                            src="/images/atasa-logo.png"
+                            alt="Atasa Danışmanlık Logo"
+                            width={130}
+                            height={46}
+                            priority
+                            className="h-8 w-auto object-contain"
+                        />
+                        {/* Shimmer Effect */}
+                        <motion.div
+                            className="absolute inset-0 top-0 bottom-0 w-2/3 bg-gradient-to-r from-transparent via-white/50 to-transparent skew-x-[-25deg] pointer-events-none z-10"
+                            initial={{ left: "-150%", opacity: 0 }}
+                            animate={{ left: "250%", opacity: [0, 1, 0] }}
+                            transition={{
+                                repeat: Infinity,
+                                repeatDelay: 6,
+                                duration: 1.5,
+                                ease: "easeInOut",
+                            }}
+                        />
+                    </div>
                 </Link>
                 <button
                     onClick={() => setMobileOpen(!mobileOpen)}

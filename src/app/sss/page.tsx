@@ -5,17 +5,17 @@ import { Accordion } from "@/shared/components/ui/Accordion";
 
 export const metadata: Metadata = {
     title: "Sık Sorulan Sorular",
-    description: "Atasa Kurumsal Danışmanlık hakkında sık sorulan sorular ve cevapları.",
+    description: "Atasa Danışmanlık hakkında sık sorulan sorular ve cevapları.",
 };
 
 const faqItems = [
     {
-        question: "Neden Atasa Kurumsal?",
+        question: "Neden Atasa Danışmanlık?",
         answer: "Bu sorunun birçok cevabı var ama tek cümle ile açıklamak gerekirse kurumlar çalıştıkları şirketin uzmanlığına güvenmek ister, şirketimiz 12 yıllık uzmanlığa sahiptir.",
     },
     {
         question: "Danışmanlık ücretleriniz niye yüksek?",
-        answer: "Aslında değil, Atasa Kurumsal Türkiye'de yabancılar için çalışma izni danışmanlık hizmeti alacak firmalara maliyetlerini net bir şekilde belirttiği için diğer meslektaşlarımız bizim altımızda teklif sunduklarında ücretlerimizin yüksek olduğunu düşünebilirsiniz.",
+        answer: "Aslında değil, Atasa Danışmanlık Türkiye'de yabancılar için çalışma izni danışmanlık hizmeti alacak firmalara maliyetlerini net bir şekilde belirttiği için diğer meslektaşlarımız bizim altımızda teklif sunduklarında ücretlerimizin yüksek olduğunu düşünebilirsiniz.",
     },
     {
         question: "Müşterilerinize garanti veriyor musunuz?",
@@ -35,7 +35,7 @@ const faqItems = [
     },
     {
         question: "Başka konularda danışmanlık hizmeti veren şirketlerle iş ortaklığı yapıyor musunuz?",
-        answer: "Evet, Atasa Kurumsal Danışmanlık olarak bir iş ortaklığı modeli oluşturduk. Bize avukatlar, mali müşavirler ve diğer danışmanlık şirketleri üzerinden yönlendirilen müşteriler için fiyat listemiz üzerinden %20 oranında komisyon ödüyoruz.",
+        answer: "Evet, Atasa Danışmanlık olarak bir iş ortaklığı modeli oluşturduk. Bize avukatlar, mali müşavirler ve diğer danışmanlık şirketleri üzerinden yönlendirilen müşteriler için fiyat listemiz üzerinden %20 oranında komisyon ödüyoruz.",
     },
 ];
 

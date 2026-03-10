@@ -150,7 +150,7 @@ export default function IkametIzniPage() {
                 <div className="container mx-auto px-4">
                     <SectionHeader
                         badge="Neden Biz?"
-                        title="Atasa Kurumsal Farkı"
+                        title="Atasa Danışmanlık Farkı"
                     />
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl">
                         {reasons.map((r, i) => (

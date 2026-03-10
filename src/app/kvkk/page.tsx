@@ -4,7 +4,7 @@ import { SectionHeader } from "@/shared/components/ui/SectionHeader";
 
 export const metadata: Metadata = {
     title: "KVKK Aydınlatma Metni",
-    description: "Atasa Kurumsal Danışmanlık KVKK Aydınlatma Metni — kişisel veri koruma politikası.",
+    description: "Atasa Danışmanlık KVKK Aydınlatma Metni — kişisel veri koruma politikası.",
 };
 
 export default function KVKKPage() {
@@ -25,7 +25,7 @@ export default function KVKKPage() {
                         <h2>Kişisel Verilerin Korunması Kanunu (KVKK) Aydınlatma Metni</h2>
 
                         <p>
-                            Atasa Kurumsal Danışmanlık A.Ş. (&quot;Şirket&quot;) olarak kişisel verilerinizin güvenliği konusunda
+                            Atasa Danışmanlık (&quot;Şirket&quot;) olarak kişisel verilerinizin güvenliği konusunda
                             azami hassasiyet göstermekteyiz. 6698 sayılı Kişisel Verilerin Korunması Kanunu (&quot;KVKK&quot;)
                             kapsamında veri sorumlusu sıfatıyla aşağıda belirtilen amaçlarla ve yöntemlerle kişisel verilerinizi
                             işlemekteyiz.
@@ -33,9 +33,9 @@ export default function KVKKPage() {
 
                         <h3>1. Veri Sorumlusu</h3>
                         <p>
-                            Atasa Kurumsal Danışmanlık A.Ş.<br />
-                            Adres: İstiklal Cd. No 187 Beyoğlu İş Merkezi Kat:1 D:133 Beyoğlu / İstanbul<br />
-                            E-posta: info@atasakurumsal.com
+                            Atasa Danışmanlık<br />
+                            Adres: Mecidiyeköy mah. Raşit Rıza sk. Ahmet Esin İş Merkezi NO:4 K:2 D:7 Şişli/İstanbul<br />
+                            E-posta: support@atasa.tr
                         </p>
 
                         <h3>2. Kişisel Verilerin İşlenme Amacı</h3>

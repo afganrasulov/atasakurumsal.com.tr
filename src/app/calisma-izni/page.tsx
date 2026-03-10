@@ -108,7 +108,7 @@ export default function CalismaIzniPage() {
                 <div className="container mx-auto px-4">
                     <SectionHeader
                         badge="5 Neden"
-                        title="Atasa Kurumsal ile Çalışmak İçin"
+                        title="Atasa Danışmanlık ile Çalışmak İçin"
                     />
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
                         {reasons.map((r, i) => (

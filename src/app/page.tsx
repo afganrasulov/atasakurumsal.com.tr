@@ -82,27 +82,81 @@ const CTASection = dynamic(
   { ssr: true }
 );
 
+const SocialProof = dynamic(
+  () =>
+    import("@/features/home/components/SocialProof").then((m) => ({
+      default: m.SocialProof,
+    })),
+  { ssr: true }
+);
+
+const GlobalPresence = dynamic(
+  () =>
+    import("@/features/home/components/GlobalPresence").then((m) => ({
+      default: m.GlobalPresence,
+    })),
+  { ssr: true }
+);
+
+const ScrollProgress = dynamic(
+  () =>
+    import("@/shared/components/ScrollProgress").then((m) => ({
+      default: m.ScrollProgress,
+    }))
+);
+
+const DynamicGradientBg = dynamic(
+  () =>
+    import("@/shared/components/DynamicGradientBg").then((m) => ({
+      default: m.DynamicGradientBg,
+    }))
+);
+
+const WaveDivider = dynamic(
+  () =>
+    import("@/shared/components/WaveDivider").then((m) => ({
+      default: m.WaveDivider,
+    })),
+  { ssr: true }
+);
+
 export default function HomePage() {
   return (
     <PageTransition>
+      {/* Efekt 8: Scroll Progress Bar */}
+      <ScrollProgress />
+      {/* Efekt 3: Dynamic Gradient Background */}
+      <DynamicGradientBg />
+
       <HeroSection />
+      <WaveDivider />
+      <SocialProof />
+      <WaveDivider />
+      <GlobalPresence />
+      <WaveDivider />
       <ValueProposition />
-      <SectionCTA
-        message="İlk adımı atın — Ücretsiz ön değerlendirme sadece 2 dakika."
-        buttonText="Hemen Başla"
-      />
+      <WaveDivider />
       <ServicesPreview />
+      <WaveDivider />
       <ProcessTimeline />
+      <WaveDivider />
       <SectionCTA
         message="Sürecinizi hemen başlatalım. Uzman ekibimiz hazır."
         buttonText="Danışman Atayın"
       />
+      <WaveDivider />
       <TrustChecklist />
+      <WaveDivider />
       <ComparisonTable />
+      <WaveDivider />
       <TrustedBy />
+      <WaveDivider />
       <Testimonials />
+      <WaveDivider />
       <InlineMiniForm />
+      <WaveDivider />
       <FAQSection />
+      <WaveDivider />
       <CTASection />
     </PageTransition>
   );

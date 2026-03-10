@@ -44,7 +44,7 @@ export async function discoverTopics(): Promise<{ keywordsScanned: number; newTo
 
 async function searchWebForKeyword(keyword: string): Promise<DiscoveredTopic[]> {
     const response = await getOpenAI().responses.create({
-        model: 'gpt-4o',
+        model: 'gpt-5-mini',
         tools: [{ type: 'web_search' as never }],
         instructions: `Sen bir içerik araştırmacısısın. Verilen anahtar kelimeye göre Türkçe güncel haber ve makale konularını bul.
 Her konu için şu bilgileri ver:

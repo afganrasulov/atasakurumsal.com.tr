@@ -3,8 +3,15 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, Phone } from "lucide-react";
 import { COMPANY_INFO } from "@/shared/constants/company";
+import { SectionHeading } from "@/shared/components/ui/SectionHeading";
+import { SectionSubtitle } from "@/shared/components/ui/SectionSubtitle";
+import { ScrollReveal } from "@/shared/components/ScrollReveal";
+import { FloatingParticles } from "@/shared/components/FloatingParticles";
+import { MagneticButton } from "@/shared/components/MagneticButton";
+import { useParallax } from "@/shared/hooks/useParallax";
+import { MorphingBlob, GradientMeshFlow, AnimatedUnderline } from "@/shared/components/IdleAnimations";
 
 function AnimatedStat({ end, suffix = "", label }: { end: number; suffix?: string; label: string }) {
     const ref = useRef<HTMLDivElement>(null);
@@ -29,15 +36,15 @@ function AnimatedStat({ end, suffix = "", label }: { end: number; suffix?: strin
         <motion.div
             ref={ref}
             className="text-center group"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-            <div className="text-3xl md:text-4xl font-black text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">
+            <div className="text-3xl md:text-4xl font-black text-white mb-1 group-hover:text-emerald-400 transition-colors">
                 {value.toLocaleString("tr-TR")}{suffix}
             </div>
-            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+            <div className="text-[11px] font-bold text-slate-500 uppercase tracking-[0.2em]">
                 {label}
             </div>
         </motion.div>
@@ -45,26 +52,55 @@ function AnimatedStat({ end, suffix = "", label }: { end: number; suffix?: strin
 }
 
 export function ValueProposition() {
+    const { ref: bgRef, y: bgY } = useParallax({ speed: 0.15 });
+
     return (
         <section
-            className="py-24 bg-white relative overflow-hidden border-t border-slate-100"
+            ref={bgRef}
+            className="py-32 relative overflow-hidden"
             aria-labelledby="value-heading"
+            style={{
+                background: "linear-gradient(180deg, #020617 0%, #0f172a 50%, #020617 100%)",
+            }}
         >
-            {/* Subtle background decoration */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[120px] -mr-40 -mt-40 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-50/30 rounded-full blur-[100px] -ml-40 -mb-40 pointer-events-none" />
+            {/* Parallaxed Pexels background */}
+            <motion.div className="absolute inset-0" style={{ y: bgY }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                    src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1"
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 w-full h-full object-cover opacity-[0.04] blur-sm pointer-events-none select-none"
+                    loading="lazy"
+                />
+            </motion.div>
+            <div className="absolute inset-0 bg-gradient-to-b from-[#020617] via-transparent to-[#020617]" />
+
+            {/* Floating Particles — diamond shape, emerald accent */}
+            <FloatingParticles count={10} color="16, 185, 129" shape="diamond" minSize={3} maxSize={7} speed={0.5} />
+
+            {/* Idle: Morphing Blob — emerald */}
+            <MorphingBlob color="16,185,129" opacity={0.03} size={450} top="60%" left="75%" duration={15} />
+
+            {/* Idle: Gradient Mesh Flow */}
+            <GradientMeshFlow colors={["rgba(16,185,129,0.03)","rgba(59,130,246,0.02)","rgba(16,185,129,0.02)","rgba(245,158,11,0.01)"]} duration={25} />
+
+            {/* Radial glow */}
+            <div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] pointer-events-none"
+                style={{ background: "radial-gradient(ellipse, rgba(16,185,129,0.06) 0%, transparent 70%)" }}
+            />
 
             <div className="container mx-auto px-4 relative z-10">
-                <motion.div
-                    className="max-w-4xl mx-auto text-center"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.6 }}
-                >
+                {/* fadeBlur heading + emerald accent */}
+                <ScrollReveal variant="fadeBlur" className="max-w-4xl mx-auto text-center">
                     {/* Badge */}
                     <motion.div
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-black uppercase tracking-widest mb-8"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-emerald-400 text-[11px] font-bold uppercase tracking-[0.2em] mb-8"
+                        style={{
+                            background: "rgba(16,185,129,0.1)",
+                            border: "1px solid rgba(16,185,129,0.15)",
+                        }}
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
@@ -75,46 +111,62 @@ export function ValueProposition() {
                     </motion.div>
 
                     {/* Heading */}
-                    <h2
-                        id="value-heading"
-                        className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.1] mb-6"
-                    >
-                        Yabancılar İçin{" "}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                            Kişiselleştirilmiş
-                        </span>{" "}
-                        Çözümler Sunar.
-                    </h2>
+                    <SectionHeading id="value-heading" className="text-3xl md:text-5xl lg:text-6xl leading-[1.1] mb-6">
+                        Yabancılar İçin Kişiselleştirilmiş Çözümler Sunar.
+                    </SectionHeading>
 
                     {/* Description */}
-                    <p className="text-lg md:text-xl text-slate-500 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
+                    <SectionSubtitle className="md:text-xl max-w-3xl mx-auto mb-10">
                         Her başvuru kendine özeldir. Şirketinizin ihtiyaçlarına göre{" "}
-                        <strong className="text-slate-700">özel strateji</strong>{" "}
+                        <strong className="text-slate-200">özel strateji</strong>{" "}
                         geliştiriyor, bürokratik süreçleri sizin yerinize yönetiyoruz.
-                    </p>
+                    </SectionSubtitle>
 
-                    {/* CTA */}
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link
-                            href="/iletisim"
-                            className="group inline-flex items-center gap-3 bg-blue-600 text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl shadow-blue-600/20 hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-600/30 transition-all duration-300 hover:scale-105 active:scale-95"
-                        >
-                            Ücretsiz Danışmanlık Alın
-                            <ArrowRight
-                                size={20}
-                                className="group-hover:translate-x-1 transition-transform"
-                            />
-                        </Link>
+                    {/* CTA — Magnetic */}
+                    <div className="flex flex-col items-center justify-center gap-5">
+                        <MagneticButton strength={0.2}>
+                            <Link
+                                href="/iletisim"
+                                className="group relative inline-flex h-[72px] overflow-hidden rounded-full p-[2px] shadow-xl shadow-emerald-600/20 hover:scale-105 transition-transform duration-300"
+                            >
+                                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#10B981_0%,#0f172a_50%,#10B981_100%)]" />
+                                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-[#0f172a] px-10 text-white backdrop-blur-3xl relative z-10 transition-colors hover:bg-[#131c2e] overflow-hidden gap-3">
+                                    <Phone size={20} className="animate-pulse" />
+                                    <span className="text-lg font-bold">
+                                        Ücretsiz Danışmanlık Alın
+                                    </span>
+                                    <ArrowRight
+                                        size={20}
+                                        className="group-hover:translate-x-1 transition-transform"
+                                    />
+                                    <span className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-25deg] animate-[shimmer_4s_ease-in-out_infinite] pointer-events-none" />
+                                </span>
+                            </Link>
+                        </MagneticButton>
                     </div>
-                </motion.div>
+                </ScrollReveal>
 
-                {/* Animated Stats row */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-16">
-                    <AnimatedStat end={COMPANY_INFO.experienceYears} suffix="+" label="Yıllık Tecrübe" />
-                    <AnimatedStat end={COMPANY_INFO.stats.workPermits} label="Çalışma İzni" />
-                    <AnimatedStat end={COMPANY_INFO.stats.corporateClients} label="Kurumsal Müşteri" />
-                    <AnimatedStat end={98} suffix="%" label="Başarı Oranı" />
-                </div>
+                {/* Animated Stats row — scaleUp reveal */}
+                <ScrollReveal variant="scaleUp" delay={0.3} className="max-w-4xl mx-auto mt-20">
+                    <div
+                        className="rounded-[20px] p-[1.5px]"
+                        style={{
+                            background: "linear-gradient(135deg, rgba(16,185,129,0.25) 0%, rgba(16,185,129,0.05) 50%, rgba(16,185,129,0.15) 100%)",
+                        }}
+                    >
+                        <div
+                            className="rounded-[19px] p-8"
+                            style={{ background: "linear-gradient(135deg, #131c2e 0%, #0f172a 100%)" }}
+                        >
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                <AnimatedStat end={COMPANY_INFO.experienceYears} suffix="+" label="Yıllık Tecrübe" />
+                                <AnimatedStat end={COMPANY_INFO.stats.workPermits} label="Çalışma İzni" />
+                                <AnimatedStat end={COMPANY_INFO.stats.corporateClients} label="Kurumsal Müşteri" />
+                                <AnimatedStat end={98} suffix="%" label="Başarı Oranı" />
+                            </div>
+                        </div>
+                    </div>
+                </ScrollReveal>
             </div>
         </section>
     );

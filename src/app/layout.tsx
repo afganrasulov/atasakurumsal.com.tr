@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/shared/components/layout/Header";
 import { Footer } from "@/shared/components/layout/Footer";
@@ -11,10 +11,13 @@ import { ExitIntentPopup } from "@/shared/components/ExitIntentPopup";
 import { PageLoadAnimation } from "@/shared/components/PageLoadAnimation";
 
 
-const inter = Inter({
+
+
+const montserrat = Montserrat({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-inter",
+  variable: "--font-display",
   display: "swap",
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const viewport: Viewport = {
@@ -26,8 +29,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Atasa Kurumsal | Çalışma İzni & İkamet Danışmanlık",
-    template: "%s | Atasa Kurumsal",
+    default: "Atasa Danışmanlık | Çalışma İzni & İkamet Danışmanlık",
+    template: "%s | Atasa Danışmanlık",
   },
   description:
     "Türkiye'de yabancı personel çalışma izni, ikamet izni ve vatandaşlık danışmanlığında 12 yıllık deneyim. Profesyonel ve güvenilir çözüm ortağınız.",
@@ -40,17 +43,17 @@ export const metadata: Metadata = {
     "vatandaşlık",
     "yabancı personel",
   ],
-  authors: [{ name: "Atasa Kurumsal Danışmanlık" }],
+  authors: [{ name: "Atasa Danışmanlık" }],
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Atasa Kurumsal",
+    title: "Atasa Danışmanlık",
   },
   openGraph: {
     type: "website",
     locale: "tr_TR",
-    siteName: "Atasa Kurumsal",
+    siteName: "Atasa Danışmanlık",
   },
 };
 
@@ -60,8 +63,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr" className="scroll-smooth">
-      <body className={`${inter.variable} font-sans antialiased text-slate-900`}>
+    <html lang="tr" className="scroll-smooth" suppressHydrationWarning>
+      <body className={`${montserrat.variable} font-sans antialiased text-slate-900`} suppressHydrationWarning>
         <QueryProvider>
           <div className="min-h-screen flex flex-col">
             <Header />

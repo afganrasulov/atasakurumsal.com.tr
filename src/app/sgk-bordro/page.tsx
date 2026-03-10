@@ -145,7 +145,7 @@ export default function SgkBordroPage() {
                             <div>
                                 <h3 className="text-2xl font-bold text-slate-900 mb-2">Kimler Yararlanabilir?</h3>
                                 <p className="text-slate-600 leading-relaxed">
-                                    SGK &amp; Bordro danışmanlık hizmetimiz, Atasa Kurumsal üzerinden çalışma izni başvurusu
+                                    SGK &amp; Bordro danışmanlık hizmetimiz, Atasa Danışmanlık üzerinden çalışma izni başvurusu
                                     yapan tüm müşterilerimize ücretsiz olarak sunulmaktadır. Çalışma izni onaylandıktan
                                     sonra SGK bildirim, bordro hesaplama ve teşvik süreçlerinde tam destek sağlıyoruz.
                                 </p>

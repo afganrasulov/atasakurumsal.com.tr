@@ -32,7 +32,7 @@ export function SectionHeader({
                 {title}
             </h2>
             {description && (
-                <p className="text-slate-500 text-lg mt-4 font-medium max-w-2xl">
+                <p className={cn("text-slate-500 text-lg mt-4 font-medium max-w-2xl", align === "center" && "mx-auto")}>
                     {description}
                 </p>
             )}

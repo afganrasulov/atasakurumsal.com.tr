@@ -20,7 +20,7 @@ export async function generateArticle(topic: Topic): Promise<{ success: boolean;
         await updateTopicStatus(topic.id, 'generating');
 
         const response = await getOpenAI().responses.create({
-            model: 'gpt-4o',
+            model: 'gpt-5-mini',
             tools: [{ type: 'web_search' as never }],
             instructions: `Sen deneyimli bir SEO uzmanı ve içerik yazarısın. Türkçe, SEO uyumlu blog makaleleri yazıyorsun.
 Hedef kitle: Türkiye'de çalışma izni almak isteyen yabancılar ve onlara danışmanlık yapan firmalar.
@@ -33,6 +33,18 @@ Makale yazarken şu kurallara uy:
 5. Keywords: İlgili SEO anahtar kelimeleri listesi
 6. SEO Score: 1-100 arası değerlendirme
 7. Slug: URL-friendly, Türkçe karakterleri dönüştür (ç→c, ş→s, ı→i vb.)
+
+LİNK KURALLARI (ÇOK ÖNEMLİ):
+- ASLA markdown link formatı kullanma ([text](url) YASAK!)
+- Sadece HTML <a> etiketleri kullan: <a href="url">text</a>
+- Sadece resmi kaynaklara (.gov.tr, .edu.tr) link ver
+- Üçüncü parti, özel sektör veya haber sitelerine asla link verme
+- Rakip danışmanlık firmalarına link verme
+
+İÇERİK ZENGİNLEŞTİRME:
+- Önemli bilgileri, tarihleri ve sayısal verileri <strong> etiketi ile vurgula
+- Alt bölümlerde numaralı veya madde işaretli listeler (<ol>, <ul>) kullan
+- Mümkün olan yerlerde bilgileri <table> ile organize et
 
 Yanıtını şu JSON formatında döndür (sadece JSON, başka bir şey yazma):
 {
@@ -72,7 +84,7 @@ Güncel bilgileri web araştırması yaparak doğrula ve zenginleştir.`,
             datePublished: new Date().toISOString(),
             author: {
                 '@type': 'Organization',
-                name: 'Atasa Kurumsal',
+                name: 'Atasa Danışmanlık',
             },
         };
 
@@ -105,6 +117,7 @@ Güncel bilgileri web araştırması yaparak doğrula ve zenginleştir.`,
         await updateTopicStatus(topic.id, 'published');
         return { success: true, message: `Makale üretildi: ${article.title}` };
     } catch (error) {
+        console.error('[seoOptimizer generateArticle ERROR]', error);
         await updateTopicStatus(topic.id, 'failed');
         const errMsg = error instanceof Error ? error.message : 'Bilinmeyen hata';
         return { success: false, message: `Hata (${topic.title}): ${errMsg}` };

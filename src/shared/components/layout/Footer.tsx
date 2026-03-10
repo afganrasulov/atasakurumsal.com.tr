@@ -65,7 +65,7 @@ export function Footer() {
                     <div>
                         <div className="flex items-center mb-6">
                             <span className="text-xl font-bold text-white tracking-tight">
-                                Atasa Kurumsal
+                                Atasa Danışmanlık
                             </span>
                         </div>
                         <p className="text-sm text-slate-500 mb-6 leading-relaxed">
@@ -255,24 +255,18 @@ export function Footer() {
                             Bize Ulaşın
                         </h3>
                         <div className="space-y-5 text-sm">
-                            <div className="flex items-start gap-3 group">
-                                <MapPin
-                                    className="shrink-0 text-blue-500 mt-1 group-hover:text-blue-400 transition-colors"
-                                    size={18}
-                                />
-                                <address className="not-italic leading-relaxed text-slate-400 group-hover:text-slate-300 transition-colors">
-                                    {COMPANY_INFO.offices.istanbul.address}
-                                </address>
-                            </div>
-                            <div className="flex items-start gap-3 group">
-                                <MapPin
-                                    className="shrink-0 text-blue-500 mt-1 group-hover:text-blue-400 transition-colors"
-                                    size={18}
-                                />
-                                <address className="not-italic leading-relaxed text-slate-400 group-hover:text-slate-300 transition-colors">
-                                    {COMPANY_INFO.offices.ankara.address}
-                                </address>
-                            </div>
+                            {Object.values(COMPANY_INFO.offices).map((office) => (
+                                <div key={office.city} className="flex items-start gap-3 group">
+                                    <MapPin
+                                        className="shrink-0 text-blue-500 mt-1 group-hover:text-blue-400 transition-colors"
+                                        size={18}
+                                    />
+                                    <address className="not-italic leading-relaxed text-slate-400 group-hover:text-slate-300 transition-colors">
+                                        <span className="text-slate-300 font-medium">{office.city}:</span>{" "}
+                                        {office.address}
+                                    </address>
+                                </div>
+                            ))}
                             <div className="flex items-center gap-3 group">
                                 <Phone
                                     className="shrink-0 text-blue-500 group-hover:text-blue-400 transition-colors"
@@ -312,7 +306,7 @@ export function Footer() {
 
                 {/* Bottom */}
                 <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-600">
-                    <p>© {new Date().getFullYear()} Atasa Kurumsal Danışmanlık. Tüm hakları saklıdır.</p>
+                    <p>© {new Date().getFullYear()} Atasa Danışmanlık. Tüm hakları saklıdır.</p>
                     <div className="flex flex-wrap gap-6 justify-center md:justify-end">
                         <Link href="/hakkimizda" className="hover:text-slate-400 transition-colors font-medium">
                             Hakkımızda

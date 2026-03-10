@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Çalışma İzni Uzatma | Atasa Kurumsal",
+    title: "Çalışma İzni Uzatma | Atasa Danışmanlık",
     description:
         "Çalışma izni uzatma başvurularınızı zamanında ve sorunsuz yönetiyoruz. Gecikme riski olmadan, belge hazırlığından sonuca kadar tam destek.",
 };

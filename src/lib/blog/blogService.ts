@@ -192,3 +192,58 @@ export async function createPost(post: {
     if (error) throw error;
     return data as Post;
 }
+
+// ─── Automation ──────────────────────────────────────────
+
+/** Discovered topic'lerden en yenilerini otomatik olarak 'approved' yap */
+export async function autoApproveTopics(limit = 3): Promise<number> {
+    const { data, error } = await getSupabaseAdmin()
+        .from('topics')
+        .select('id')
+        .eq('status', 'discovered')
+        .order('created_at', { ascending: false })
+        .limit(limit);
+
+    if (error) throw error;
+    if (!data || data.length === 0) return 0;
+
+    const ids = data.map((t: { id: string }) => t.id);
+    const { error: updateError } = await getSupabaseAdmin()
+        .from('topics')
+        .update({ status: 'approved', updated_at: new Date().toISOString() })
+        .in('id', ids);
+
+    if (updateError) throw updateError;
+    return ids.length;
+}
+
+/** Bugün kaç makale üretildiğini kontrol et */
+export async function getTodayGenerationCount(): Promise<number> {
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
+
+    const { count, error } = await getSupabaseAdmin()
+        .from('posts')
+        .select('id', { count: 'exact', head: true })
+        .gte('created_at', todayStart.toISOString());
+
+    if (error) throw error;
+    return count ?? 0;
+}
+
+/** Otomasyon çalışma sonucunu logla */
+export async function logAutomationRun(log: {
+    discovered: number;
+    approved: number;
+    generated: number;
+    errors: string[];
+    duration_ms: number;
+    status: 'success' | 'partial' | 'failed';
+}) {
+    const { error } = await getSupabaseAdmin()
+        .from('automation_logs')
+        .insert(log);
+
+    if (error) console.error('[Automation Log Error]', error);
+}
+

@@ -115,6 +115,14 @@ DİKKAT EDİLECEK KURALLAR:
 - SADECE şu hizmetlerle ilgili kelimeler türetebilirsin: Yabancılara Çalışma İzni, İkamet İzni (oturma izni), Çalışma İzni Uzatma, Çalışma İzni Transferi, Yabancı Bakıcı Çalışma İzni, Türk Vatandaşlığı, Turkuaz Kart, Toplu Başvuru, Yabancı SGK/Bordro, Yabancı Şirket Kuruluşu, Sektörel Yabancı İstihdamı.
 - ASLA "Türkiye'de gezilecek yerler", "En iyi üniversiteler", "Yabancılar için hastaneler" gibi turistik/günlük yaşam kelimeleri GETİRME! %100 Kurumsal Danışmanlık niyeti barındıran ("nasıl alınır", "şartları nelerdir", "2024 güncel harçları", "gerekli evraklar", "reddi durumunda ne yapılır") gibi kelimeler üret.
 - Daha önce kullanılan kelimelerle çakışmaması için kelimeleri birbirinden çok farklı, soru tipli veya niş kitlelere yönelik (örn: İngiliz vatandaşları için Türkiye çalışma izni, teknoloji şirketi yabancı mühendis çalışma izni) üret.
+
+ÖRNEK ODAK KELİMELERİMİZ (Bunların kalitesinde ve nişliğinde anahtar kelimeler türet):
+- yabancılara çalışma izni nasıl alınır, çalışma izni gerekli belgeler, çalışma izni harçları, çalışma izni başvuru süreleri
+- çalışma izni red ve itiraz, çalışma izni muafiyetleri, istisnai çalışma izni, yabancı çalışma izni yeni kanun
+- yabancı taban ücretler, deport olmuş yabancılara çalışma izni, şirket ortağı çalışma izni, yabancı SGK girişi
+- çalışma izni uzatma müracaat belgesi, serbest bölgelerde çalışma izni, Türk soylu çalışma izni
+- ev hizmetlerinde yabancı çalıştırma, yabancı öğretmen çalışma izni, ikamet izni çeşitleri, ikamet izni ücretleri, yabancı ortaklı şirket kuruluşu
+
 Sonucu SADECE JSON array olarak döndür: ["keyword1", "keyword2", "keyword3"]`,
         input: `Bana sadece Atasa Danışmanlık hizmetlerine TAM uyumlu 5 adet yeni, niş ve etkili long-tail anahtar kelime üret.`,
     });

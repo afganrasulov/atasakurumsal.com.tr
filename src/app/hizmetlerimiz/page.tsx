@@ -25,6 +25,7 @@ import {
     Target
 } from "lucide-react";
 import { NetworkBackground } from "@/shared/components/NetworkBackground";
+import { TiltCard } from "@/shared/components/TiltCard";
 import { COMPANY_INFO } from "@/shared/constants/company";
 import { formatPhone } from "@/shared/lib/utils";
 
@@ -227,16 +228,7 @@ export default function HizmetlerimizPage() {
                             transition={{ duration: 0.7, delay: 0.3 }}
                         >
                             <span className="block text-white/40 mb-2">Size En Uygun</span>
-                            <span
-                                className="block"
-                                style={{
-                                    background:
-                                        "linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #3b82f6 100%)",
-                                    WebkitBackgroundClip: "text",
-                                    WebkitTextFillColor: "transparent",
-                                    backgroundClip: "text",
-                                }}
-                            >
+                            <span className="block bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent">
                                 Hizmeti Seçin
                             </span>
                         </motion.h1>
@@ -378,16 +370,7 @@ export default function HizmetlerimizPage() {
                         <span className="text-[11px] font-bold text-blue-400 uppercase tracking-[0.25em]">
                             Hizmetlerimiz
                         </span>
-                        <h2
-                            className="text-3xl md:text-5xl font-black mt-4 tracking-tight"
-                            style={{
-                                background:
-                                    "linear-gradient(90deg, #ffffff 20%, #64748b 100%)",
-                                WebkitBackgroundClip: "text",
-                                WebkitTextFillColor: "transparent",
-                                backgroundClip: "text",
-                            }}
-                        >
+                        <h2 className="text-3xl md:text-5xl font-black mt-4 tracking-tight bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
                             Tüm Hizmetlerimiz
                         </h2>
                         <p className="text-slate-500 text-lg mt-4 max-w-2xl mx-auto font-medium">
@@ -409,69 +392,84 @@ export default function HizmetlerimizPage() {
                                 variants={itemVariants}
                                 className="group relative"
                             >
-                                {/* Hover gradient border */}
-                                <div
-                                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[1px]"
-                                    style={{
-                                        background: `linear-gradient(135deg, rgba(${service.accentColor},0.5), rgba(${service.accentColor},0.05), rgba(${service.accentColor},0.3))`,
-                                    }}
-                                >
-                                    <div className="w-full h-full rounded-2xl bg-[#0f172a]" />
-                                </div>
-
-                                {/* Card */}
-                                <Link
-                                    href={service.href}
-                                    className="relative z-10 block p-8 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm hover:border-white/10 transition-all duration-500 h-full"
-                                >
-                                    {/* Badge */}
-                                    {service.badge && (
-                                        <div
-                                            className="absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
-                                            style={{
-                                                background: `rgba(${service.accentColor}, 0.12)`,
-                                                color: `rgba(${service.accentColor}, 1)`,
-                                                border: `1px solid rgba(${service.accentColor}, 0.2)`,
-                                            }}
-                                        >
-                                            {service.badge}
-                                        </div>
-                                    )}
-
-                                    {/* Icon */}
-                                    <div
-                                        className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+                                <TiltCard className="h-full" glowColor={service.accentColor}>
+                                    <Link
+                                        href={service.href}
+                                        className="group block h-[340px] rounded-[20px] p-[1.5px] transition-all duration-500 hover:-translate-y-2"
                                         style={{
-                                            background: `linear-gradient(135deg, rgba(${service.accentColor},0.15), rgba(${service.accentColor},0.05))`,
+                                            background: `linear-gradient(135deg, rgba(${service.accentColor},0.25) 0%, rgba(${service.accentColor},0.05) 40%, rgba(${service.accentColor},0.15) 100%)`,
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.background = `linear-gradient(135deg, rgba(${service.accentColor},0.5) 0%, rgba(${service.accentColor},0.1) 40%, rgba(${service.accentColor},0.35) 100%)`;
+                                            e.currentTarget.style.boxShadow = `0 0 40px rgba(${service.accentColor},0.15)`;
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.background = `linear-gradient(135deg, rgba(${service.accentColor},0.25) 0%, rgba(${service.accentColor},0.05) 40%, rgba(${service.accentColor},0.15) 100%)`;
+                                            e.currentTarget.style.boxShadow = "none";
                                         }}
                                     >
                                         <div
-                                            className="transition-colors duration-300"
-                                            style={{ color: `rgba(${service.accentColor}, 0.9)` }}
+                                            className="h-full rounded-[19px] p-8 flex flex-col pt-6 relative overflow-hidden"
+                                            style={{ background: "linear-gradient(135deg, #131c2e 0%, #0f172a 100%)" }}
                                         >
-                                            {service.icon}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/80 to-transparent z-0 pointer-events-none" />
+                                            <div
+                                                className="absolute inset-0 opacity-[0.03] transition-opacity duration-500 group-hover:opacity-[0.1] z-0 pointer-events-none"
+                                                style={{
+                                                    background: `radial-gradient(circle at 50% 50%, rgba(${service.accentColor},1) 0%, transparent 70%)`
+                                                }}
+                                            />
+                                            
+                                            <div className="relative z-10 flex flex-col h-full">
+                                                <div className="w-full flex justify-between items-start mb-5">
+                                                    {/* Icon */}
+                                                    <div
+                                                        className="w-14 h-14 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+                                                        style={{
+                                                            background: `linear-gradient(135deg, rgba(${service.accentColor},0.15), rgba(${service.accentColor},0.05))`,
+                                                            color: `rgba(${service.accentColor}, 0.9)`,
+                                                        }}
+                                                    >
+                                                        {service.icon}
+                                                    </div>
+                                                    
+                                                    {/* Badge */}
+                                                    {service.badge && (
+                                                        <div
+                                                            className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider h-fit mt-2"
+                                                            style={{
+                                                                background: `rgba(${service.accentColor}, 0.12)`,
+                                                                color: `rgba(${service.accentColor}, 1)`,
+                                                                border: `1px solid rgba(${service.accentColor}, 0.2)`,
+                                                            }}
+                                                        >
+                                                            {service.badge}
+                                                        </div>
+                                                    )}
+                                                </div>
+
+                                                {/* Title */}
+                                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">
+                                                    {service.title}
+                                                </h3>
+
+                                                {/* Description */}
+                                                <p className="text-slate-400 text-[13px] leading-relaxed mb-6 flex-grow">
+                                                    {service.desc}
+                                                </p>
+
+                                                {/* Arrow */}
+                                                <div className="flex items-center gap-2 text-sm font-bold text-slate-500 group-hover:text-blue-400 transition-all duration-300 mt-auto">
+                                                    <span>Detayları İncele</span>
+                                                    <ArrowRight
+                                                        size={16}
+                                                        className="group-hover:translate-x-2 transition-transform duration-300"
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-
-                                    {/* Title */}
-                                    <h3 className="text-lg font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">
-                                        {service.title}
-                                    </h3>
-
-                                    {/* Description */}
-                                    <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                                        {service.desc}
-                                    </p>
-
-                                    {/* Arrow */}
-                                    <div className="flex items-center gap-2 text-sm font-bold text-slate-500 group-hover:text-blue-400 transition-all duration-300">
-                                        <span>Detayları İncele</span>
-                                        <ArrowRight
-                                            size={16}
-                                            className="group-hover:translate-x-2 transition-transform duration-300"
-                                        />
-                                    </div>
-                                </Link>
+                                    </Link>
+                                </TiltCard>
                             </motion.div>
                         ))}
                     </motion.div>
@@ -498,16 +496,7 @@ export default function HizmetlerimizPage() {
                         <span className="text-[11px] font-bold text-blue-400 uppercase tracking-[0.25em]">
                             Nasıl Çalışıyoruz
                         </span>
-                        <h2
-                            className="text-3xl md:text-5xl font-black mt-4 tracking-tight"
-                            style={{
-                                background:
-                                    "linear-gradient(90deg, #ffffff 20%, #64748b 100%)",
-                                WebkitBackgroundClip: "text",
-                                WebkitTextFillColor: "transparent",
-                                backgroundClip: "text",
-                            }}
-                        >
+                        <h2 className="text-3xl md:text-5xl font-black mt-4 tracking-tight bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
                             4 Adımda Süreç Yönetimi
                         </h2>
                     </motion.div>
@@ -621,16 +610,7 @@ export default function HizmetlerimizPage() {
                             İletişim
                         </motion.div>
 
-                        <h2
-                            className="text-3xl md:text-5xl font-black tracking-tight mb-6"
-                            style={{
-                                background:
-                                    "linear-gradient(135deg, #ffffff 0%, #60a5fa 60%, #3b82f6 100%)",
-                                WebkitBackgroundClip: "text",
-                                WebkitTextFillColor: "transparent",
-                                backgroundClip: "text",
-                            }}
-                        >
+                        <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-6 bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent">
                             Hangi Hizmete İhtiyacınız Var?
                         </h2>
 

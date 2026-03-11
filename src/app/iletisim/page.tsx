@@ -22,6 +22,7 @@ import { COMPANY_INFO } from "@/shared/constants/company";
 import { formatPhone } from "@/shared/lib/utils";
 import { supabase } from "@/shared/lib/supabase";
 import { NetworkBackground } from "@/shared/components/NetworkBackground";
+import { TiltCard } from "@/shared/components/TiltCard";
 import { z } from "zod";
 
 /* ── Validation ──────────────────────────────────────────── */
@@ -271,7 +272,7 @@ export default function IletisimPage() {
                                 className="block"
                                 style={{
                                     background:
-                                        "linear-gradient(to right, #ffffff 0%, #94a3b8 100%)",
+                                        "linear-gradient(to right, #ffffff 0%, #e2e8f0 100%)",
                                     WebkitBackgroundClip: "text",
                                     WebkitTextFillColor: "transparent",
                                     backgroundClip: "text",
@@ -399,19 +400,24 @@ export default function IletisimPage() {
                                 </motion.div>
                             ) : (
                                 /* ── Form Card ── */
-                                <div className="relative">
-                                    {/* Gradient border wrapper */}
+                                <div
+                                    className="relative group/form rounded-[24px] p-[1.5px] transition-all duration-500"
+                                    style={{
+                                        background: "linear-gradient(135deg, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0.05) 40%, rgba(59,130,246,0.15) 100%)",
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.background = "linear-gradient(135deg, rgba(59,130,246,0.4) 0%, rgba(59,130,246,0.1) 40%, rgba(59,130,246,0.25) 100%)";
+                                        e.currentTarget.style.boxShadow = "0 0 40px rgba(59,130,246,0.1)";
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.background = "linear-gradient(135deg, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0.05) 40%, rgba(59,130,246,0.15) 100%)";
+                                        e.currentTarget.style.boxShadow = "none";
+                                    }}
+                                >
                                     <div
-                                        className="absolute inset-0 rounded-3xl p-[1px]"
-                                        style={{
-                                            background:
-                                                "linear-gradient(135deg, rgba(59,130,246,0.3) 0%, rgba(59,130,246,0.05) 50%, rgba(59,130,246,0.15) 100%)",
-                                        }}
+                                        className="relative z-10 p-8 md:p-10 rounded-[22.5px] overflow-hidden"
+                                        style={{ background: "linear-gradient(135deg, #131c2e 0%, #0f172a 100%)" }}
                                     >
-                                        <div className="w-full h-full rounded-3xl bg-[#0f172a]" />
-                                    </div>
-
-                                    <div className="relative z-10 p-8 md:p-10 rounded-3xl border border-white/[0.04] bg-white/[0.01] backdrop-blur-sm">
                                         {/* Form Header */}
                                         <div className="mb-8">
                                             <div className="flex items-center gap-3 mb-2">
@@ -608,17 +614,25 @@ export default function IletisimPage() {
                             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                         >
                             {/* Direct Contact Card */}
-                            <div className="relative group">
+                            <TiltCard glowColor="59, 130, 246">
                                 <div
-                                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[1px]"
+                                    className="relative group rounded-[20px] p-[1.5px] transition-all duration-500 hover:-translate-y-2"
                                     style={{
-                                        background:
-                                            "linear-gradient(135deg, rgba(59,130,246,0.4), rgba(59,130,246,0.05), rgba(59,130,246,0.2))",
+                                        background: "linear-gradient(135deg, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0.05) 40%, rgba(59,130,246,0.15) 100%)",
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.background = "linear-gradient(135deg, rgba(59,130,246,0.5) 0%, rgba(59,130,246,0.1) 40%, rgba(59,130,246,0.35) 100%)";
+                                        e.currentTarget.style.boxShadow = "0 0 40px rgba(59,130,246,0.1)";
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.background = "linear-gradient(135deg, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0.05) 40%, rgba(59,130,246,0.15) 100%)";
+                                        e.currentTarget.style.boxShadow = "none";
                                     }}
                                 >
-                                    <div className="w-full h-full rounded-2xl bg-[#0f172a]" />
-                                </div>
-                                <div className="relative z-10 p-7 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm hover:border-white/10 transition-all duration-500">
+                                    <div
+                                        className="rounded-[19px] p-7 relative overflow-hidden"
+                                        style={{ background: "linear-gradient(135deg, #131c2e 0%, #0f172a 100%)" }}
+                                    >
                                     <h3 className="text-sm font-bold text-white mb-5 flex items-center gap-2">
                                         <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
                                         Doğrudan Ulaşın
@@ -672,28 +686,37 @@ export default function IletisimPage() {
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                                </div>
+                            </TiltCard>
 
                             {/* Office Cards */}
                             {Object.values(COMPANY_INFO.offices).map((office, i) => (
                                 <motion.div
                                     key={office.city}
-                                    className="relative group"
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.1 * i, duration: 0.5 }}
                                 >
-                                    <div
-                                        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[1px]"
-                                        style={{
-                                            background:
-                                                "linear-gradient(135deg, rgba(59,130,246,0.3), rgba(59,130,246,0.03), rgba(59,130,246,0.15))",
-                                        }}
-                                    >
-                                        <div className="w-full h-full rounded-2xl bg-[#0f172a]" />
-                                    </div>
-                                    <div className="relative z-10 p-7 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm hover:border-white/10 transition-all duration-500">
+                                    <TiltCard glowColor="59, 130, 246">
+                                        <div
+                                            className="relative group rounded-[20px] p-[1.5px] transition-all duration-500 hover:-translate-y-2"
+                                            style={{
+                                                background: "linear-gradient(135deg, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0.05) 40%, rgba(59,130,246,0.15) 100%)",
+                                            }}
+                                            onMouseEnter={(e) => {
+                                                e.currentTarget.style.background = "linear-gradient(135deg, rgba(59,130,246,0.5) 0%, rgba(59,130,246,0.1) 40%, rgba(59,130,246,0.35) 100%)";
+                                                e.currentTarget.style.boxShadow = "0 0 40px rgba(59,130,246,0.1)";
+                                            }}
+                                            onMouseLeave={(e) => {
+                                                e.currentTarget.style.background = "linear-gradient(135deg, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0.05) 40%, rgba(59,130,246,0.15) 100%)";
+                                                e.currentTarget.style.boxShadow = "none";
+                                            }}
+                                        >
+                                            <div
+                                                className="rounded-[19px] p-7 relative overflow-hidden"
+                                                style={{ background: "linear-gradient(135deg, #131c2e 0%, #0f172a 100%)" }}
+                                            >
                                         <div className="flex items-center justify-between mb-3">
                                             <div className="flex items-center gap-3">
                                                 <div
@@ -733,28 +756,38 @@ export default function IletisimPage() {
                                             <Phone size={12} className="text-blue-400/50" />
                                             {office.phone}
                                         </a>
-                                    </div>
+                                            </div>
+                                        </div>
+                                    </TiltCard>
                                 </motion.div>
                             ))}
 
                             {/* Working Hours */}
                             <motion.div
-                                className="relative group"
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.4, duration: 0.5 }}
                             >
-                                <div
-                                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[1px]"
-                                    style={{
-                                        background:
-                                            "linear-gradient(135deg, rgba(59,130,246,0.3), rgba(59,130,246,0.03), rgba(59,130,246,0.15))",
-                                    }}
-                                >
-                                    <div className="w-full h-full rounded-2xl bg-[#0f172a]" />
-                                </div>
-                                <div className="relative z-10 p-7 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm hover:border-white/10 transition-all duration-500">
+                                <TiltCard glowColor="59, 130, 246">
+                                    <div
+                                        className="relative group rounded-[20px] p-[1.5px] transition-all duration-500 hover:-translate-y-2"
+                                        style={{
+                                            background: "linear-gradient(135deg, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0.05) 40%, rgba(59,130,246,0.15) 100%)",
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.background = "linear-gradient(135deg, rgba(59,130,246,0.5) 0%, rgba(59,130,246,0.1) 40%, rgba(59,130,246,0.35) 100%)";
+                                            e.currentTarget.style.boxShadow = "0 0 40px rgba(59,130,246,0.1)";
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.background = "linear-gradient(135deg, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0.05) 40%, rgba(59,130,246,0.15) 100%)";
+                                            e.currentTarget.style.boxShadow = "none";
+                                        }}
+                                    >
+                                        <div
+                                            className="rounded-[19px] p-7 relative overflow-hidden"
+                                            style={{ background: "linear-gradient(135deg, #131c2e 0%, #0f172a 100%)" }}
+                                        >
                                     <div className="flex items-center gap-3 mb-5">
                                         <div
                                             className="w-10 h-10 rounded-xl flex items-center justify-center"
@@ -830,7 +863,9 @@ export default function IletisimPage() {
                                             </span>
                                         </div>
                                     </div>
-                                </div>
+                                        </div>
+                                    </div>
+                                </TiltCard>
                             </motion.div>
                         </motion.div>
                     </div>

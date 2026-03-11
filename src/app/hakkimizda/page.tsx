@@ -22,6 +22,11 @@ import {
 } from "lucide-react";
 import { COMPANY_INFO } from "@/shared/constants/company";
 import { NetworkBackground } from "@/shared/components/NetworkBackground";
+import { FloatingParticles } from "@/shared/components/FloatingParticles";
+import { MagneticButton } from "@/shared/components/MagneticButton";
+import { useParallax } from "@/shared/hooks/useParallax";
+import { MorphingBlob, AmbientLightSweep } from "@/shared/components/IdleAnimations";
+import { TiltCard } from "@/shared/components/TiltCard";
 import { formatPhone } from "@/shared/lib/utils";
 import Link from "next/link";
 
@@ -168,18 +173,21 @@ const STATS = [
 
 /* ── Page Component ──────────────────────────────────────── */
 export default function HakkimizdaPage() {
+    const { ref: parallaxRef, y: bgY } = useParallax({ speed: 0.25 });
+
     return (
         <>
             {/* ═══════════════ CINEMATIC HERO ═══════════════ */}
-            <section className="relative min-h-[90vh] overflow-hidden flex items-center">
+            <section ref={parallaxRef} className="relative min-h-[90vh] overflow-hidden flex items-center">
                 {/* Background layers */}
-                <div className="absolute inset-0">
+                <motion.div className="absolute inset-0" style={{ y: bgY }}>
                     <div
-                        className="absolute inset-0 opacity-[0.15]"
+                        className="absolute inset-0 opacity-[0.25]"
                         style={{
-                            backgroundImage: "url(/images/about-hero-bg.png)",
+                            backgroundImage: "url('https://images.pexels.com/photos/1546901/pexels-photo-1546901.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80')",
                             backgroundSize: "cover",
                             backgroundPosition: "center",
+                            backgroundAttachment: "fixed",
                         }}
                     />
                     <div
@@ -190,7 +198,24 @@ export default function HakkimizdaPage() {
                         }}
                     />
                     <NetworkBackground />
-                </div>
+                </motion.div>
+
+                {/* Floating Ambient Particles */}
+                <FloatingParticles
+                    count={18}
+                    color="59, 130, 246"
+                    shape="circle"
+                    minSize={2}
+                    maxSize={8}
+                    speed={0.6}
+                />
+
+                {/* Idle: Morphing Blob */}
+                <MorphingBlob color="59,130,246" opacity={0.03} size={500} top="50%" left="15%" duration={14} />
+                <MorphingBlob color="139,92,246" opacity={0.02} size={350} top="25%" left="80%" duration={18} />
+
+                {/* Idle: Ambient Light Sweep */}
+                <AmbientLightSweep duration={12} opacity={0.03} />
 
                 {/* Radial glow */}
                 <div
@@ -204,9 +229,9 @@ export default function HakkimizdaPage() {
                 <div className="container mx-auto px-4 relative z-10 py-32">
                     <motion.div
                         className="max-w-4xl mx-auto text-center"
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
                     >
                         {/* Badge */}
                         <motion.div
@@ -226,32 +251,27 @@ export default function HakkimizdaPage() {
                         {/* Heading */}
                         <motion.h1
                             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-8"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.7, delay: 0.3 }}
+                            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+                            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                            transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                            style={{
+                                background: "linear-gradient(135deg, #ffffff 0%, #f1f5f9 50%, #cbd5e1 100%)",
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
+                                backgroundClip: "text",
+                            }}
                         >
-                            <span className="block text-white/40 mb-2">Türkiye&apos;nin</span>
-                            <span
-                                className="block"
-                                style={{
-                                    background:
-                                        "linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #3b82f6 100%)",
-                                    WebkitBackgroundClip: "text",
-                                    WebkitTextFillColor: "transparent",
-                                    backgroundClip: "text",
-                                }}
-                            >
-                                En Güvenilir Danışmanlık
-                            </span>
-                            <span className="block text-white/90 mt-1">Şirketi</span>
+                            <span className="block mb-2">Türkiye&apos;nin</span>
+                            <span className="block">En Güvenilir Danışmanlık</span>
+                            <span className="block mt-1">Şirketi</span>
                         </motion.h1>
 
                         {/* Description */}
                         <motion.p
                             className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed font-medium"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.7, delay: 0.5 }}
+                            initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
+                            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                            transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
                         >
                             Atasa Danışmanlık, 2012 yılında Ankara Ticaret Odası&apos;na kayıt
                             olarak hizmet hayatına başladı.{" "}
@@ -267,19 +287,21 @@ export default function HakkimizdaPage() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.7 }}
                         >
-                            <Link
-                                href="/iletisim"
-                                className="group relative overflow-hidden inline-flex items-center gap-3 bg-white text-slate-900 px-10 py-4 rounded-full font-bold text-lg hover:bg-slate-100 transition-all duration-300 hover:scale-105 active:scale-95"
-                                style={{ boxShadow: "0 0 40px rgba(255,255,255,0.1)" }}
-                            >
-                                <span className="relative z-10 flex items-center gap-3">
-                                    Bize Ulaşın
-                                    <ArrowRight
-                                        size={20}
-                                        className="group-hover:translate-x-1 transition-transform"
-                                    />
-                                </span>
-                            </Link>
+                            <MagneticButton strength={0.2}>
+                                <Link
+                                    href="/iletisim"
+                                    className="group relative overflow-hidden inline-flex items-center gap-3 bg-white text-slate-900 px-10 py-4 rounded-full font-bold text-lg hover:bg-slate-100 transition-all duration-300 hover:scale-105 active:scale-95"
+                                    style={{ boxShadow: "0 0 40px rgba(255,255,255,0.1)" }}
+                                >
+                                    <span className="relative z-10 flex items-center gap-3">
+                                        Bize Ulaşın
+                                        <ArrowRight
+                                            size={20}
+                                            className="group-hover:translate-x-1 transition-transform"
+                                        />
+                                    </span>
+                                </Link>
+                            </MagneticButton>
                             <a
                                 href={`tel:${formatPhone(COMPANY_INFO.phone)}`}
                                 className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors font-medium"
@@ -500,37 +522,47 @@ export default function HakkimizdaPage() {
                             <motion.div
                                 key={v.title}
                                 variants={itemVariants}
-                                className="group relative"
+                                className="group h-full"
                             >
-                                {/* Gradient border wrapper */}
-                                <div
-                                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[1px]"
-                                    style={{
-                                        background: `linear-gradient(135deg, rgba(59,130,246,0.4), rgba(59,130,246,0.05), rgba(59,130,246,0.2))`,
-                                    }}
-                                >
-                                    <div className="w-full h-full rounded-2xl bg-[#0f172a]" />
-                                </div>
-
-                                {/* Card content */}
-                                <div className="relative z-10 p-8 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm hover:border-white/10 transition-all duration-500">
+                                <TiltCard className="h-full" glowColor="59, 130, 246">
                                     <div
-                                        className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br ${v.gradient} bg-opacity-10`}
+                                        className="relative block h-full rounded-[20px] p-[1px] transition-all duration-500 hover:-translate-y-2"
                                         style={{
-                                            background: `linear-gradient(135deg, rgba(59,130,246,0.1), rgba(59,130,246,0.03))`,
+                                            background: `linear-gradient(135deg, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0.05) 40%, rgba(59,130,246,0.15) 100%)`,
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.background = `linear-gradient(135deg, rgba(59,130,246,0.5) 0%, rgba(59,130,246,0.1) 40%, rgba(59,130,246,0.35) 100%)`;
+                                            e.currentTarget.style.boxShadow = "0 0 40px rgba(59,130,246,0.1)";
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.background = `linear-gradient(135deg, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0.05) 40%, rgba(59,130,246,0.15) 100%)`;
+                                            e.currentTarget.style.boxShadow = "none";
                                         }}
                                     >
-                                        <div className="text-blue-400 group-hover:text-blue-300 transition-colors">
-                                            {v.icon}
+                                        <div
+                                            className="h-full rounded-[19px] p-8 flex flex-col relative overflow-hidden"
+                                            style={{ background: "linear-gradient(135deg, #131c2e 0%, #0f172a 100%)" }}
+                                        >
+                                            <div
+                                                className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br ${v.gradient} bg-opacity-10 group-hover:scale-110 transition-all duration-500`}
+                                                style={{
+                                                    background: `linear-gradient(135deg, rgba(59,130,246,0.1), rgba(59,130,246,0.03))`,
+                                                    border: "1px solid rgba(59,130,246,0.15)",
+                                                }}
+                                            >
+                                                <div className="text-blue-400 group-hover:text-white transition-colors">
+                                                    {v.icon}
+                                                </div>
+                                            </div>
+                                            <h3 className="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-blue-300 transition-colors">
+                                                {v.title}
+                                            </h3>
+                                            <p className="text-slate-400 text-sm leading-relaxed font-light tracking-wide">
+                                                {v.desc}
+                                            </p>
                                         </div>
                                     </div>
-                                    <h3 className="text-lg font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">
-                                        {v.title}
-                                    </h3>
-                                    <p className="text-slate-400 text-sm leading-relaxed">
-                                        {v.desc}
-                                    </p>
-                                </div>
+                                </TiltCard>
                             </motion.div>
                         ))}
                     </motion.div>

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Briefcase, Home, Flag, RefreshCw, ArrowRightLeft, Building } from "lucide-react";
+import { ArrowRight, Briefcase, Home, Flag, RefreshCw, ArrowRightLeft, Building, Target, Heart, Building2, FileText, Landmark } from "lucide-react";
 import { motion } from "framer-motion";
 import { SERVICES } from "@/shared/constants/company";
 import { ScrollReveal, staggerItemVariants } from "@/shared/components/ScrollReveal";
@@ -15,6 +15,11 @@ const iconMap: Record<string, React.ReactNode> = {
     RefreshCw: <RefreshCw size={22} strokeWidth={1.5} />,
     ArrowRightLeft: <ArrowRightLeft size={22} strokeWidth={1.5} />,
     Building: <Building size={22} strokeWidth={1.5} />,
+    Target: <Target size={22} strokeWidth={1.5} />,
+    Heart: <Heart size={22} strokeWidth={1.5} />,
+    Building2: <Building2 size={22} strokeWidth={1.5} />,
+    FileText: <FileText size={22} strokeWidth={1.5} />,
+    Landmark: <Landmark size={22} strokeWidth={1.5} />,
 };
 
 export function ServicesPreview() {

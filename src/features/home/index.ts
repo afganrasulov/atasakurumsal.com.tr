@@ -11,3 +11,4 @@ export { InlineMiniForm } from "./components/InlineMiniForm";
 export { FAQSection } from "./components/FAQSection";
 export { WhyUsSection } from "./components/WhyUsSection";
 export { CTASection } from "./components/CTASection";
+export { MobileHeroSection } from "./components/MobileHeroSection";

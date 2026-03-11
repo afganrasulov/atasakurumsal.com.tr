@@ -8,7 +8,7 @@ export function FloatingWhatsApp() {
             href="https://wa.me/908503086998"
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-6 right-6 z-50 group"
+            className="hidden lg:block fixed bottom-6 right-6 z-50 group"
             aria-label="WhatsApp ile iletişime geçin"
         >
             {/* Pulse ring */}

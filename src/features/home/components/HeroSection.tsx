@@ -18,7 +18,7 @@ import { MorphingBlob, AmbientLightSweep } from "@/shared/components/IdleAnimati
 
 function AnimatedCounter({ end, suffix = "", prefix = "" }: { end: number; suffix?: string; prefix?: string }) {
     const ref = useRef<HTMLSpanElement>(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const isInView = useInView(ref, { once: true, margin: "-10px" });
     const [value, setValue] = useState(0);
 
     useEffect(() => {
@@ -54,7 +54,7 @@ export function HeroSection() {
     return (
         <section
             ref={parallaxRef}
-            className="relative min-h-[85vh] overflow-hidden flex flex-col justify-center pt-12 md:pt-20 bg-gradient-to-b from-white to-slate-100"
+            className="hidden lg:flex relative min-h-[85vh] overflow-hidden flex-col justify-center pt-12 lg:pt-20 bg-gradient-to-b from-white to-slate-100"
         >
             {/* Network Background with Parallax */}
             <motion.div className="absolute inset-0 overflow-hidden" style={{ y: bgY }}>

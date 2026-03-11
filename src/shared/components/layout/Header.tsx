@@ -38,7 +38,7 @@ export function Header() {
     return (
         <>
             {/* Desktop Navbar */}
-            <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl hidden md:block">
+            <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl hidden lg:block">
                 <nav
                     aria-label="Ana Navigasyon"
                     className={cn(
@@ -116,7 +116,10 @@ export function Header() {
             </div>
 
             {/* Mobile Header */}
-            <div className="md:hidden fixed top-0 w-full z-50 bg-white/90 backdrop-blur-2xl border-b border-slate-100 px-4 py-2 flex justify-between items-center shadow-sm">
+            <div className={cn(
+                "lg:hidden fixed top-0 w-full z-50 bg-white/90 backdrop-blur-2xl border-b border-slate-100 px-4 py-2 justify-between items-center shadow-sm",
+                pathname === "/" ? "hidden" : "flex"
+            )}>
                 <Link href="/" className="flex items-center" aria-label="Ana Sayfa">
                     <div className="relative overflow-hidden rounded-lg">
                         <Image

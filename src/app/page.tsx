@@ -1,4 +1,4 @@
-import { HeroSection, ServicesPreview } from "@/features/home";
+import { HeroSection, MobileHeroSection, ServicesPreview } from "@/features/home";
 import { PageTransition } from "@/shared/components/PageTransition";
 import dynamic from "next/dynamic";
 
@@ -128,6 +128,7 @@ export default function HomePage() {
       {/* Efekt 3: Dynamic Gradient Background */}
       <DynamicGradientBg />
 
+      <MobileHeroSection />
       <HeroSection />
       <WaveDivider />
       <SocialProof />

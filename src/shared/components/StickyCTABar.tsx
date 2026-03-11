@@ -29,7 +29,7 @@ export function StickyCTABar() {
                     animate={{ x: 0, opacity: 1 }}
                     exit={{ x: 80, opacity: 0 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-2.5 pr-4"
+                    className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-2.5 pr-4"
                 >
                     {/* Danışmanlık */}
                     <Link

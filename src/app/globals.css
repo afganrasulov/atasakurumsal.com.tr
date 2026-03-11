@@ -21,6 +21,13 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+input, textarea {
+  user-select: auto;
+  -webkit-user-select: auto;
 }
 
 ::selection {
@@ -56,6 +63,15 @@ body {
   100% {
     transform: translateX(400%) skewX(-25deg);
   }
+}
+
+/* Utilities */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 /* Blog article prose styles */

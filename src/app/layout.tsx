@@ -11,6 +11,7 @@ import { StickyCTABar } from "@/shared/components/StickyCTABar";
 import { ExitIntentPopup } from "@/shared/components/ExitIntentPopup";
 import { PageLoadAnimation } from "@/shared/components/PageLoadAnimation";
 import { JsonLd } from "@/shared/components/seo/JsonLd";
+import { MobileBottomTabBar } from "@/shared/components/layout/MobileBottomTabBar";
 import {
   generateOrganizationSchema,
   generateLocalBusinessSchema,
@@ -31,6 +32,8 @@ const montserrat = Montserrat({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
   viewportFit: "cover",
   themeColor: "#0047BB",
 };
@@ -115,8 +118,9 @@ export default function RootLayout({
         <QueryProvider>
           <div className="min-h-screen flex flex-col">
             <Header />
-            <main className="flex-grow pt-20 md:pt-24">{children}</main>
+            <main className="flex-grow pt-20 lg:pt-24 pb-20 lg:pb-0">{children}</main>
             <Footer />
+            <MobileBottomTabBar />
             <FloatingWhatsApp />
             <StickyCTABar />
             <ExitIntentPopup />

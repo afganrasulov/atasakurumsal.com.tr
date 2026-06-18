@@ -2,9 +2,11 @@
 
 import { useState, useRef, FormEvent } from "react";
 import { motion } from "framer-motion";
-import { Send, CheckCircle2, Loader2 } from "lucide-react";
+import { Send, CheckCircle2, Loader2, Phone } from "lucide-react";
 import { SectionHeading } from "@/shared/components/ui/SectionHeading";
 import { SectionSubtitle } from "@/shared/components/ui/SectionSubtitle";
+import { COMPANY_INFO } from "@/shared/constants/company";
+import { formatPhone } from "@/shared/lib/utils";
 
 const SERVICES_OPTIONS = [
     "Çalışma İzni",
@@ -17,6 +19,7 @@ const SERVICES_OPTIONS = [
 export function InlineMiniForm() {
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
     const nameRef = useRef<HTMLInputElement>(null);
     const phoneRef = useRef<HTMLInputElement>(null);
     const serviceRef = useRef<HTMLSelectElement>(null);
@@ -24,6 +27,7 @@ export function InlineMiniForm() {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setLoading(true);
+        setError(false);
 
         const name = nameRef.current?.value ?? "";
         const phone = phoneRef.current?.value ?? "";
@@ -44,13 +48,13 @@ export function InlineMiniForm() {
             });
             setLoading(false);
             if (!res.ok) {
-                alert("Gönderilemedi, lütfen tekrar deneyin.");
+                setError(true);
                 return;
             }
             setSubmitted(true);
         } catch {
             setLoading(false);
-            alert("Gönderilemedi, lütfen tekrar deneyin.");
+            setError(true);
         }
     };
 
@@ -189,6 +193,14 @@ export function InlineMiniForm() {
                                                 </option>
                                             ))}
                                         </select>
+                                        {error && (
+                                            <div className="flex flex-wrap items-center gap-2 rounded-xl px-4 py-3 text-sm" style={{ background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.18)" }}>
+                                                <span className="text-red-300">Gönderilemedi. Lütfen tekrar deneyin veya arayın:</span>
+                                                <a href={`tel:${formatPhone(COMPANY_INFO.phone)}`} className="inline-flex items-center gap-1 font-semibold text-white">
+                                                    <Phone size={14} /> {COMPANY_INFO.phone}
+                                                </a>
+                                            </div>
+                                        )}
                                         <button
                                             type="submit"
                                             disabled={loading}

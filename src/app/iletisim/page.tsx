@@ -209,7 +209,7 @@ export default function IletisimPage() {
             });
             setLoading(false);
             if (!res.ok) {
-                setSubmitError("Mesaj gönderilemedi. Lütfen tekrar deneyin.");
+                setSubmitError("Mesaj şu an gönderilemedi. Lütfen tekrar deneyin veya bize doğrudan ulaşın:");
                 return;
             }
             setSubmitted(true);
@@ -560,19 +560,37 @@ export default function IletisimPage() {
                                                 <motion.div
                                                     initial={{ opacity: 0, y: -5 }}
                                                     animate={{ opacity: 1, y: 0 }}
-                                                    className="rounded-2xl p-4 flex items-center gap-3"
+                                                    className="rounded-2xl p-4 flex flex-col gap-3"
                                                     style={{
                                                         background: "rgba(239,68,68,0.08)",
                                                         border: "1px solid rgba(239,68,68,0.15)",
                                                     }}
                                                 >
-                                                    <AlertCircle
-                                                        size={18}
-                                                        className="text-red-400 shrink-0"
-                                                    />
-                                                    <p className="text-sm text-red-400 font-medium">
-                                                        {submitError}
-                                                    </p>
+                                                    <div className="flex items-center gap-3">
+                                                        <AlertCircle
+                                                            size={18}
+                                                            className="text-red-400 shrink-0"
+                                                        />
+                                                        <p className="text-sm text-red-400 font-medium">
+                                                            {submitError}
+                                                        </p>
+                                                    </div>
+                                                    <div className="flex flex-wrap gap-2 pl-7">
+                                                        <a
+                                                            href={`tel:${formatPhone(COMPANY_INFO.phone)}`}
+                                                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg px-3 py-2 transition-colors"
+                                                        >
+                                                            <Phone size={14} /> Bizi Arayın
+                                                        </a>
+                                                        <a
+                                                            href={`https://wa.me/${formatPhone(COMPANY_INFO.phone).replace("+", "")}`}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg px-3 py-2 transition-colors"
+                                                        >
+                                                            <MessageSquare size={14} /> WhatsApp
+                                                        </a>
+                                                    </div>
                                                 </motion.div>
                                             )}
 

@@ -20,7 +20,6 @@ import {
 } from "lucide-react";
 import { COMPANY_INFO } from "@/shared/constants/company";
 import { formatPhone } from "@/shared/lib/utils";
-import { supabase } from "@/shared/lib/supabase";
 import { NetworkBackground } from "@/shared/components/NetworkBackground";
 import { TiltCard } from "@/shared/components/TiltCard";
 import { z } from "zod";
@@ -196,21 +195,28 @@ export default function IletisimPage() {
         setLoading(true);
         setSubmitError(null);
 
-        const { error } = await supabase.rpc("submit_contact_form", {
-            p_name: result.data.name,
-            p_phone: result.data.phone,
-            p_email: result.data.email,
-            p_message: result.data.message,
-        });
-
-        setLoading(false);
-
-        if (error) {
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: result.data.name,
+                    phone: result.data.phone,
+                    email: result.data.email,
+                    message: result.data.message,
+                    source: "iletisim",
+                }),
+            });
+            setLoading(false);
+            if (!res.ok) {
+                setSubmitError("Mesaj gönderilemedi. Lütfen tekrar deneyin.");
+                return;
+            }
+            setSubmitted(true);
+        } catch {
+            setLoading(false);
             setSubmitError("Mesaj gönderilemedi. Lütfen tekrar deneyin.");
-            return;
         }
-
-        setSubmitted(true);
     };
 
     return (

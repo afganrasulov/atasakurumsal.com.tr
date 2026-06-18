@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Send, CheckCircle2, Loader2 } from "lucide-react";
 import { SectionHeading } from "@/shared/components/ui/SectionHeading";
 import { SectionSubtitle } from "@/shared/components/ui/SectionSubtitle";
-import { supabase } from "@/shared/lib/supabase";
 
 const SERVICES_OPTIONS = [
     "Çalışma İzni",
@@ -30,21 +29,29 @@ export function InlineMiniForm() {
         const phone = phoneRef.current?.value ?? "";
         const service = serviceRef.current?.value ?? "";
 
-        const { error } = await supabase.rpc("submit_contact_form", {
-            p_name: name,
-            p_phone: phone,
-            p_email: "",
-            p_message: `[Hızlı Form] Hizmet: ${service}`,
-        });
-
-        setLoading(false);
-
-        if (error) {
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name,
+                    phone,
+                    email: "",
+                    message: `[Hızlı Form] Hizmet: ${service}`,
+                    subject: service,
+                    source: "mini",
+                }),
+            });
+            setLoading(false);
+            if (!res.ok) {
+                alert("Gönderilemedi, lütfen tekrar deneyin.");
+                return;
+            }
+            setSubmitted(true);
+        } catch {
+            setLoading(false);
             alert("Gönderilemedi, lütfen tekrar deneyin.");
-            return;
         }
-
-        setSubmitted(true);
     };
 
     return (

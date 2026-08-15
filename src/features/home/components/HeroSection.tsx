@@ -217,7 +217,7 @@ export function HeroSection() {
                                     <div key={`hero-logo-${i}`} className="flex-shrink-0 mx-6">
                                         {/* eslint-disable-next-line @next/next/no-img-element */}
                                         <img
-                                            src={`https://khlvkvusavalbkjrwbsy.supabase.co/storage/v1/object/public/public-assets/atasa_kurumsal_web_sitesi/referanslar/${file}.png`}
+                                            src={`https://api.atasa.mobi/storage/v1/object/public/public-assets/atasa_kurumsal_web_sitesi/referanslar/${file}.png`}
                                             alt=""
                                             className="h-8 w-auto object-contain opacity-25 grayscale hover:opacity-50 transition-all duration-500"
                                             loading="lazy"

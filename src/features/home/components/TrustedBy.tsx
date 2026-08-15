@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 const STORAGE_BASE =
-    "https://khlvkvusavalbkjrwbsy.supabase.co/storage/v1/object/public/public-assets/atasa_kurumsal_web_sitesi/referanslar";
+    "https://api.atasa.mobi/storage/v1/object/public/public-assets/atasa_kurumsal_web_sitesi/referanslar";
 
 const TRUSTED_LOGOS = [
     { name: "Cengiz Holding", file: "cengiz-holding.png" },

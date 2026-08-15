@@ -461,7 +461,7 @@ web/src/
 
 ## Supabase Yapılandırması
 
-- **Proje ID**: `khlvkvusavalbkjrwbsy`
+- **Proje ID**: `api.atasa.mobi` (self-hosted)
 - **Schema**: `atasa_kurumsal`
 - **PostgREST**: Schema `pgrst.db_schemas` üzerinden expose edilmiştir
 - **İzinler**: `service_role`, `anon`, `authenticated` rolleri için tam erişim verilmiştir

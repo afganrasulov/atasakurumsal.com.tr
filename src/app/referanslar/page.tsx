@@ -41,7 +41,7 @@ interface ReferenceItem {
 /* ──────────────────────────── Data ──────────────────────────── */
 
 const STORAGE_BASE =
-    "https://khlvkvusavalbkjrwbsy.supabase.co/storage/v1/object/public/public-assets/atasa_kurumsal_web_sitesi/referanslar";
+    "https://api.atasa.mobi/storage/v1/object/public/public-assets/atasa_kurumsal_web_sitesi/referanslar";
 
 const img = (file: string) => `${STORAGE_BASE}/${file}`;
 
